@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEJANJALI | Official Music Artist &amp; Executive Producer Portfolio</title>
+<!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#09080d',
+              charcoal: '#0d0b14',
+              burgundy: '#1f0814',
+              wine: '#2c0c1e',
+              deepwine: '#3d102b',
+              gold: '#d4af37',
+              goldlight: '#f6e27a',
+              goldmuted: '#998246',
+              amber: '#ff7844',
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'gold-glow': '0 0 25px rgba(212, 175, 55, 0.25)',
+            'gold-glow-lg': '0 0 45px rgba(212, 175, 55, 0.4)',
+            'wine-glow': '0 0 35px rgba(255, 120, 68, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Typography & Global Styles -->
+<style data-purpose="typography">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #09080d;
+      color: #e5e5e7;
+      overflow-x: hidden;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #fff3c4 0%, #d4af37 50%, #aa8010 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-sunset-gradient {
+      background: linear-gradient(135deg, #ffd3b6 0%, #ff7844 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+<!-- Component & Glassmorphism Styles -->
+<style data-purpose="glass-and-animations">
+    .glass-nav {
+      background: rgba(13, 11, 20, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .glass-card {
+      background: rgba(22, 14, 28, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      background: rgba(35, 16, 40, 0.8);
+      border-color: rgba(212, 175, 55, 0.45);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+      transform: translateY(-4px);
+    }
+    .pulse-glow {
+      animation: pulseGlow 4s infinite alternate ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0% { opacity: 0.35; transform: scale(1); }
+      100% { opacity: 0.7; transform: scale(1.04); }
+    }
+    .hero-mask {
+      mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-gray-200 selection:bg-brand-gold selection:text-black">
+<!-- BEGIN: MainNavbar -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<nav class="glass-nav mx-auto max-w-7xl mt-3 md:mt-4 rounded-full px-5 py-3.5 flex items-center justify-between border border-brand-gold/20 shadow-2xl">
+<!-- Logo Branding -->
+<a aria-label="Tejanjali Home" class="flex items-center gap-2 group" href="#hero">
+<img alt="Musical Note Icon" class="w-5 h-8 object-contain filter drop-shadow-[0_0_8px_#d4af37]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs5ZXUGr2xiIdiiFVc0D5hQq3gGVhxTdpx82UBMGGZumXl61NiPugG3lSxbveCBY6D5zzRUJYOmgJtelxG5LIPunIHLL_EPOhFFJZGPgFXPZQ7K9zOwEz6KKjxxyHBF-7vQRecWnJL_7XWSztIvmrSZNYKucqVyTM-QkR_81B02ZAttYmTEWikZ6SyhLXH6-lcRhUJAx_7-TmQWTwChIvn6na3fpkZr8KlQuN9ghBrRcqHnJguLwgnzQ"/>
+<div class="flex flex-col">
+<span class="font-cinzel text-xl md:text-2xl font-bold tracking-[0.25em] text-gold-gradient group-hover:brightness-125 transition-all">TEJANJALI</span>
+<span class="text-[9px] uppercase tracking-[0.3em] text-brand-goldmuted font-semibold -mt-1">Artist &amp; Producer</span>
+</div>
+</a>
+<!-- Navigation Links -->
+<div class="hidden lg:flex items-center space-x-7 text-xs font-medium tracking-widest text-gray-300 uppercase">
+<a class="hover:text-brand-gold transition-colors" href="#about">About</a>
+<a class="hover:text-brand-gold transition-colors" href="#identity">Identity</a>
+<a class="hover:text-brand-gold transition-colors" href="#journey">Journey</a>
+<a class="hover:text-brand-gold transition-colors" href="#artistry">Artistry</a>
+<a class="hover:text-brand-gold transition-colors" href="#music">Music</a>
+<a class="hover:text-brand-gold transition-colors" href="#vasavi">Vasavi</a>
+<a class="hover:text-brand-gold transition-colors" href="#gallery">Moments</a>
+</div>
+<!-- Book CTA Button -->
+<div class="flex items-center gap-3">
+<a class="relative inline-flex items-center justify-center px-6 py-2.5 text-xs font-semibold tracking-widest uppercase text-brand-black bg-gradient-to-r from-brand-gold via-brand-goldlight to-brand-gold rounded-full shadow-gold-glow hover:brightness-110 transition-all hover:scale-105 active:scale-95 font-cinzel" href="#contact">
+          Book Event
+        </a>
+</div>
+</nav>
+</header>
+<!-- END: MainNavbar -->
+<!-- BEGIN: HeroSection -->
+<section class="relative min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 flex items-center justify-center overflow-hidden" data-purpose="hero-section" id="hero">
+<!-- Atmospheric Ambient Glows -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<img alt="Atmospheric ambient glow" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-screen filter blur-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHXH-AHp5ORbg1VB09n_WTI1X-X8s9jqR7kEih--j3c3A_FOqlOyqIvZqZmQpJkqAW2TSESTSYahXGalOhC17F8hDeBeYrHvye9N1b_pL5qFiFnuKCIHh2O2P8qc7iNCjOyQ9BuJhO226ldggnZ0OXjZoxNMatAoPyLXlwnmVwGunAWawa_Erhi8kcETuqlFDG2afteKlvSYeXwpGe_MvZChdiU0LGFU9A7xhDZXBRve6i1PLctZ09dw"/>
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-amber/20 rounded-full blur-3xl pulse-glow"></div>
+<div class="absolute top-1/3 -right-20 w-96 h-96 bg-brand-wine/50 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-1/4 w-[600px] h-48 bg-brand-gold/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Hero Content Container -->
+<div class="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column: Editorial Headline -->
+<div class="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+<!-- Prestige Badge -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-burgundy/80 border border-brand-gold/30 backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+<span class="text-xs font-semibold tracking-[0.25em] text-brand-gold uppercase">Multifaceted Music Artist</span>
+</div>
+<!-- Big Cinematic Title -->
+<div class="space-y-2">
+<h1 class="font-cinzel text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-gold-gradient leading-none">
+            TEJANJALI
+          </h1>
+<p class="text-lg sm:text-xl md:text-2xl text-amber-200/90 font-cinzel font-light tracking-wide flex flex-wrap items-center gap-2 pt-2">
+<span>Singer</span>
+<span class="text-brand-gold text-xs">•</span>
+<span>Lyricist</span>
+<span class="text-brand-gold text-xs">•</span>
+<span>Composer</span>
+<span class="text-brand-gold text-xs">•</span>
+<span>Performer</span>
+</p>
+</div>
+<!-- Chief Associate Highlight Line -->
+<div class="p-4 rounded-xl border-l-2 border-brand-gold bg-white/[0.03] backdrop-blur-sm max-w-xl">
+<p class="text-xs uppercase tracking-widest text-brand-goldlight font-semibold mb-1">Esteemed Industry Honor</p>
+<p class="text-sm md:text-base text-gray-300 font-light">
+            Chief Associate of Legendary Music Director <span class="text-white font-medium">Koti Garu</span>. Driving cinematic musicality, studio direction, and large-scale stage productions.
+          </p>
+</div>
+<!-- Poetic Quote -->
+<blockquote class="italic text-gray-300 font-light text-base md:text-lg border-l border-brand-amber/40 pl-4 py-1">
+          “Music, expression, and performance in one artistic journey.”
+        </blockquote>
+<!-- Action CTA Buttons -->
+<div class="flex flex-wrap items-center gap-4 pt-4">
+<a class="px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-gold via-brand-goldlight to-brand-gold text-brand-black font-cinzel font-bold text-xs uppercase tracking-widest shadow-gold-glow-lg hover:scale-105 active:scale-95 transition-all" href="#journey">
+            Explore Her Journey
+          </a>
+<a class="px-8 py-3.5 rounded-full glass-card text-white font-cinzel font-semibold text-xs uppercase tracking-widest hover:border-brand-gold hover:text-brand-goldlight transition-all flex items-center gap-2" href="#live-performance">
+<svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            Watch Performance
+          </a>
+</div>
+<!-- Waveform Preview Graphic -->
+<div class="pt-6 w-full max-w-md opacity-85">
+<img alt="Audio Sound Waveform" class="w-full h-12 object-contain filter brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb9ez0WGy2LKe1gbWDZu2iyOQWeHS9Gn6hTVRN_grUVa3lZM2R7qswby7zNme1A_p6zn4XFPSvVpiCkmBmcxmWTRqtGbOFz8eQFwbJOdULsQJPEzgtQUsJV4YArAx6AJAwRw_xPy8s9TsDqSMlNyc2-Piove3VoV46y33xg6ZCE3TTcuwepmqXUi83UEfMzQVcSf-2BE8NoCO8oQ3QGz78TVeIriB1tI1qlMi54opqegLFQFhtw7svvg"/>
+<p class="text-[10px] tracking-widest uppercase text-gray-400 text-center -mt-1">Frequency of Soul • Acoustic • Symphonic</p>
+</div>
+</div>
+<!-- Right Column: Hero Stage Portrait -->
+<div class="lg:col-span-5 relative flex justify-center items-center">
+<!-- Glowing Halo Ring Backdrop -->
+<div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-brand-gold/30 via-brand-wine/60 to-brand-amber/30 blur-2xl pulse-glow"></div>
+<!-- Portrait Container with Editorial Border Frame -->
+<div class="relative z-10 w-full max-w-md rounded-3xl overflow-hidden p-2 bg-gradient-to-b from-brand-gold/40 via-brand-burgundy/40 to-transparent border border-brand-gold/40 shadow-2xl">
+<div class="relative rounded-2xl overflow-hidden bg-brand-charcoal">
+<img alt="Tejanjali Singing Live with Shimmering Costume" class="w-full h-[520px] md:h-[580px] object-cover object-top filter contrast-105 brightness-100 transition-transform duration-700 hover:scale-105 hero-mask" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi7CHMKF2mY0HSPPiV3Ymjpar6q5SbwoVoaOOgACaRf7Ty-1fESeKa3EvxDNh0ZqKgIOYL30SplUXqOanTyuEhuvpNXOHuUSyTmLtYLHr7OlEDUS4sq5PwucsSWyerWzsuflMC8zP4jLn7b7oY0j4xfxjxDiOMVEWodVepWIMsuwWwAMgXuqAC4UwkOyTBEFm5gvb36w9RO89iVwpIJJI9tgHBB-s_jJgPaTybuaGtJLftIPfBGAPmkA"/>
+<!-- Bottom Vignette Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-80"></div>
+<!-- Live Stage Tag -->
+<div class="absolute bottom-6 left-6 right-6 flex items-center justify-between p-3.5 rounded-xl glass-card">
+<div>
+<p class="text-[10px] tracking-widest uppercase text-brand-gold font-bold">Stage Presence</p>
+<p class="text-xs font-semibold text-white">Live Vocal Performance</p>
+</div>
+<div class="h-8 w-8 rounded-full bg-brand-gold/20 flex items-center justify-center border border-brand-gold/40">
+<span class="w-2.5 h-2.5 rounded-full bg-brand-gold animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Instruments Motif -->
+<div class="absolute -bottom-6 -left-6 hidden sm:block w-28 h-28 opacity-80 pointer-events-none">
+<img alt="Musical Instruments Sketch" class="w-full h-full object-contain filter invert drop-shadow-[0_0_12px_#ff7844]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOeRdI41xrOSGVP6C6H5K4_7HOb7itwfQz5e_lPPLjlvQuN-lpcebiBAFwyE5lTNl7nWm-jpCfoGBSjehWApAo_FjHVxlsxPFEV7Nah8NbmCOf_yuET5acN-KhVfFK3Jcx19UYj-FURPSwiNQiNbWc7uC8Y5hK03UQvifT6yguKij5eBUdVaHel8mULba0ES_hAO_9XSwvBohId1y7T7RKxGgFFJb1p4VsORqVRA0m4Yy5UbuEz02kNQ"/>
+</div>
+</div>
+</div>
+<!-- Scroll Down Visual Anchor -->
+<a class="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity" href="#identity">
+<span class="text-[9px] tracking-[0.3em] uppercase text-gray-400">Scroll</span>
+<div class="w-4 h-7 rounded-full border border-brand-gold/40 flex items-start justify-center p-1">
+<div class="w-1 h-2 bg-brand-gold rounded-full animate-bounce"></div>
+</div>
+</a>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ArtistIdentitySection -->
+<section class="relative py-24 bg-gradient-to-b from-brand-black via-brand-charcoal to-brand-burgundy/30 border-t border-brand-gold/10" data-purpose="artist-identity" id="identity">
+<div class="max-w-7xl mx-auto px-6">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<p class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase mb-2">Multidimensional Craft</p>
+<h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          MORE THAN ONE VOICE
+        </h2>
+<div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto my-4"></div>
+<p class="text-gray-400 text-sm md:text-base font-light">
+          A multifaceted artist shaped by music, creativity, and performance. Seamlessly transcending creative barriers across the sonic and visual arts.
+        </p>
+</div>
+<!-- 8 Identity Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- 01 SINGER -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">01</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">SINGER</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Versatile vocal range embracing classical Carnatic nuances, soulful cinematic melodies, and high-tempo live concert anthems.</p>
+</div>
+<!-- 02 LYRICIST -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">02</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">LYRICIST</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Penning poetic Telugu verses that carry emotional gravity, spiritual devotion, and contemporary cultural resonance.</p>
+</div>
+<!-- 03 COMPOSER -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">03</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">COMPOSER</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Crafting original melodies and song arrangements that blend classical ragas with contemporary world music orchestration.</p>
+</div>
+<!-- 04 PERFORMER -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">04</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">PERFORMER</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Electrifying concert auditoriums worldwide—from GAMA Dubai to grand arena tours with magnetic, commanding energy.</p>
+</div>
+<!-- 05 ARTIST -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">05</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">ARTIST</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Embodying artistic integrity across acting, visual aesthetic direction, and devotional character portrayal.</p>
+</div>
+<!-- 06 CHOREOGRAPHER -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">06</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">CHOREOGRAPHER</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Integrating classical mudras and fluid rhythmic bodily expression into live performances and large-ensemble music videos.</p>
+</div>
+<!-- 07 EXECUTIVE PRODUCER -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">07</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">EXECUTIVE PRODUCER</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Orchestrating end-to-end multi-disciplinary projects, team leadership, production design, and major national label distribution.</p>
+</div>
+<!-- 08 ANCHOR -->
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<span class="text-5xl font-cinzel font-black text-brand-gold/15 absolute top-3 right-4 group-hover:text-brand-gold/30 transition-colors">08</span>
+<div class="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-5 group-hover:bg-brand-gold group-hover:text-brand-black transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<h3 class="font-cinzel text-lg font-bold text-white mb-2 tracking-wide">ANCHOR</h3>
+<p class="text-xs text-gray-400 leading-relaxed">Engaging audiences with poise, eloquent oration, and vivacious charisma on prestigious broadcast shows and music galas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ArtistIdentitySection -->
+<!-- BEGIN: AboutSection -->
+<section class="relative py-28 overflow-hidden bg-brand-black" data-purpose="about-editorial" id="about">
+<!-- Atmospheric subtle glow -->
+<div class="absolute -right-40 top-1/4 w-96 h-96 bg-brand-wine/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Visual Split: Two Curated Photographs -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-4 relative">
+<!-- Classical Roots: Veena Image -->
+<div class="relative rounded-2xl overflow-hidden border border-brand-gold/20 shadow-xl group">
+<img alt="Tejanjali in Traditional Pink Attire holding Veena" class="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtV_n9zR3vyVhCGpSEejdETzwjG47AE8XfiFv0t1eGOLeOB2I8FpqciITqQhSPtyFVcEcOOJDFEa7ZDoNRcvKhtE6MVjVv1DCAjTShkc20aA89RQEdQzUSGKlXnijvJ2iGW30jwRoxQ5DrAPcYk-W4M3tYkYx9C95cnk-KwQkxxdcuSv0bRby2mFV0NPt4r_ds8TSTkLJqCimMioumWK28-5fzA4NOuV28DXwrHmptbEeUoRtdrx91hw"/>
+<div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/90 to-transparent text-[11px] font-cinzel text-brand-gold">
+              Classical Heritage • Veena
+            </div>
+</div>
+<!-- Studio Mentorship: With Legendary Director Koti -->
+<div class="relative rounded-2xl overflow-hidden border border-brand-gold/20 shadow-xl mt-8 group">
+<img alt="Tejanjali Collaborating in Studio with Legendary Music Director Koti" class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuYfYKFCGKX4JKz-QnEi5t5F4PImov8x-LxEo3dZdnrZbXQpBf8CtUNZwAJ1oOu2Ys-mm9F4HG0X4rWhx0MuO6cSxC6MO16NIsjPT_zmw6Nr0IMgsRK-xXXjw-DjHIStDprzKNpgZAplDVOPdEpe75dL8akoCxdPL7jonLJ0SXZcKsszbpzlt--Q-v8Td-s4M4kyHHjiwSIrBbApXBQgL-SfuiDHBLPwUVOs3kiKV-QdITCAuaCs8aMQ"/>
+<div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/90 to-transparent text-[11px] font-cinzel text-brand-goldlight">
+              With Legendary Director Koti
+            </div>
+</div>
+<!-- Central Decorative Badge -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-brand-black/90 border-2 border-brand-gold shadow-gold-glow flex items-center justify-center p-2 text-center">
+<span class="text-[9px] font-cinzel uppercase font-black tracking-widest text-brand-gold">KOTI<br/>LEGACY</span>
+</div>
+</div>
+<!-- Text Editorial Column -->
+<div class="lg:col-span-6 space-y-6">
+<div class="inline-block px-3 py-1 rounded bg-brand-gold/10 border border-brand-gold/30">
+<p class="text-[11px] uppercase tracking-[0.25em] text-brand-gold font-bold">Biographical Spotlight</p>
+</div>
+<h2 class="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            THE CHIEF ASSOCIATE OF <span class="text-gold-gradient">LEGENDARY DIRECTOR KOTI</span>
+</h2>
+<p class="text-gray-300 text-sm md:text-base leading-relaxed font-light">
+            Tejanjali stands at the prestigious intersection of traditional Telugu artistry and modern cinematic execution. Guided under the direct mentorship of legendary music maestro <strong>Koti Garu</strong>, she has handled music production from conceptual inception through live recording, arrangement, and master releases.
+          </p>
+<p class="text-gray-400 text-sm leading-relaxed font-light">
+            Her artistic trajectory is marked by high versatility: composing, writing lyrics, executing complex choreography, anchoring grand musical events, and taking helm as Executive Producer. From intimate studio songwriting to headlining international stages at <em>GAMA Dubai</em>, her creative expression knows no boundaries.
+          </p>
+<!-- Key Metrics Grid -->
+<div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-gold/20">
+<div class="p-3 rounded-xl glass-card text-center">
+<span class="block font-cinzel text-3xl font-black text-brand-gold">08</span>
+<span class="text-[10px] uppercase tracking-wider text-gray-400">Began Journey At Age 8</span>
+</div>
+<div class="p-3 rounded-xl glass-card text-center">
+<span class="block font-cinzel text-2xl font-black text-brand-goldlight">GAMA</span>
+<span class="text-[10px] uppercase tracking-wider text-gray-400">Dubai Global Stage</span>
+</div>
+<div class="p-3 rounded-xl glass-card text-center">
+<span class="block font-cinzel text-3xl font-black text-brand-amber">8+</span>
+<span class="text-[10px] uppercase tracking-wider text-gray-400">Artistic Disciplines</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: TimelineSection -->
+<section class="py-24 bg-gradient-to-b from-brand-black via-brand-charcoal to-brand-black border-t border-brand-gold/10 relative" data-purpose="milestones-timeline" id="journey">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-20">
+<p class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase mb-2">Chronicle of Excellence</p>
+<h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">THE JOURNEY</h2>
+<div class="w-20 h-0.5 bg-brand-gold mx-auto mt-3"></div>
+</div>
+<!-- Vertical Timeline Component -->
+<div class="relative">
+<!-- Glowing Center Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-gold via-brand-amber to-brand-gold/20 -translate-x-1/2 shadow-gold-glow"></div>
+<!-- Milestone 1: Age 8 -->
+<div class="relative flex flex-col md:flex-row items-start mb-14 group">
+<div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+<span class="font-cinzel text-xs font-bold tracking-widest text-brand-gold">AGE 8 • GENESIS</span>
+<h3 class="text-lg font-cinzel font-bold text-white mt-1">Beginning the Musical Path</h3>
+<p class="text-xs text-gray-400 mt-2 font-light">Discovered an innate ear for pitch and classical ragas, initiating intensive training and winning early vocal competitions.</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center shadow-gold-glow z-10">
+<div class="w-2 h-2 rounded-full bg-brand-gold"></div>
+</div>
+<div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+</div>
+<!-- Milestone 2: Classical Rigor -->
+<div class="relative flex flex-col md:flex-row items-start mb-14 group">
+<div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-black border-2 border-brand-amber flex items-center justify-center shadow-wine-glow z-10">
+<div class="w-2 h-2 rounded-full bg-brand-amber"></div>
+</div>
+<div class="md:w-1/2 md:pl-12 pl-12">
+<span class="font-cinzel text-xs font-bold tracking-widest text-brand-amber">FORMATIVE MASTERY</span>
+<h3 class="text-lg font-cinzel font-bold text-white mt-1">Classical Roots &amp; Instrumentation</h3>
+<p class="text-xs text-gray-400 mt-2 font-light">Deepened studies in Indian classical vocal traditions, Veena, acoustic guitar, and keyboard harmony to build versatile musicianship.</p>
+</div>
+</div>
+<!-- Milestone 3: Industry Leadership / Koti Garu -->
+<div class="relative flex flex-col md:flex-row items-start mb-14 group">
+<div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+<span class="font-cinzel text-xs font-bold tracking-widest text-brand-gold">INDUSTRY LEADERSHIP</span>
+<h3 class="text-lg font-cinzel font-bold text-white mt-1">Chief Associate to Legendary Koti</h3>
+<p class="text-xs text-gray-400 mt-2 font-light">Stepped into Telugu cinema's elite studios as Chief Associate to legendary composer Koti Garu, coordinating orchestras and directing vocalists.</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center shadow-gold-glow z-10">
+<div class="w-2 h-2 rounded-full bg-brand-gold"></div>
+</div>
+<div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+</div>
+<!-- Milestone 4: GAMA Dubai Global Stage -->
+<div class="relative flex flex-col md:flex-row items-start mb-14 group">
+<div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-black border-2 border-brand-goldlight flex items-center justify-center shadow-gold-glow z-10">
+<div class="w-2 h-2 rounded-full bg-brand-goldlight"></div>
+</div>
+<div class="md:w-1/2 md:pl-12 pl-12">
+<span class="font-cinzel text-xs font-bold tracking-widest text-brand-goldlight">INTERNATIONAL ACCLAIM</span>
+<h3 class="text-lg font-cinzel font-bold text-white mt-1">GAMA Dubai Stage Phenomenon</h3>
+<p class="text-xs text-gray-400 mt-2 font-light">Delivered an unforgettable international performance before thousands at GAMA in Dubai, displaying electrifying vocal agility and stage charisma.</p>
+</div>
+</div>
+<!-- Milestone 5: Executive Producer & Present Era -->
+<div class="relative flex flex-col md:flex-row items-start group">
+<div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+<span class="font-cinzel text-xs font-bold tracking-widest text-brand-gold">PRESENT &amp; BEYOND</span>
+<h3 class="text-lg font-cinzel font-bold text-white mt-1">Vasavi Sakshatkaram &amp; Label Releases</h3>
+<p class="text-xs text-gray-400 mt-2 font-light">Spearheading massive devotional and cinematic releases as Executive Producer, Lead Performer, and Composer distributed across global streaming platforms.</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center shadow-gold-glow z-10">
+<div class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></div>
+</div>
+<div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: TimelineSection -->
+<!-- BEGIN: HerArtistrySection -->
+<section class="py-24 bg-brand-black relative overflow-hidden" data-purpose="artistry-gallery-collage" id="artistry">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-baseline justify-between mb-16 border-b border-brand-gold/20 pb-6">
+<div>
+<p class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase">Creative Disciplines</p>
+<h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mt-1">HER ARTISTRY</h2>
+</div>
+<p class="text-xs tracking-widest uppercase text-gray-400 mt-3 md:mt-0 font-light">Vocals • Lyricism • Instrumentals • Composition</p>
+</div>
+<!-- Asymmetrical Editorial Collage -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<!-- Vocals in Studio -->
+<div class="md:col-span-5 relative group rounded-2xl overflow-hidden glass-card">
+<img alt="Tejanjali at the Studio Mic with Headphones" class="w-full h-80 md:h-[480px] object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK99DksZMMTwmdzKiEObKRT4RF-RXkDZilh6CvcNby-M66xYVARHewYzO2Z1Ip0aRq_hydo1L5rl04DNe7g0PPH9U_OBt3CRvu_P2YR6iqrURWEIweMRF_0dRw9a3zrH3xELOtKEvhz3SgND3BEbvi9uBsyDHGnlzofIrIpHafxXlwydQZHA0KOr11n80f7BZQRlmSpnG-y8sDdy8diaaA2JPVwTPn57aR23ZsH5FPWdm7u2zAMIkgXQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+<span class="text-xs font-cinzel tracking-widest text-brand-gold uppercase">Vocal Delivery</span>
+<h3 class="text-xl font-cinzel font-bold text-white">Pure Studio Precision</h3>
+<p class="text-xs text-gray-300 mt-1">Expressive nuances, soulful pitch control, and vocal dynamics tailored for high-fidelity soundtrack recordings.</p>
+</div>
+</div>
+<!-- Songwriting & Composition -->
+<div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Writing Lyrics -->
+<div class="relative group rounded-2xl overflow-hidden glass-card">
+<img alt="Tejanjali Writing Lyrics with Pen and Journal" class="w-full h-56 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFXxP2upA9nGOD4BeFwcQokXm3hbU1C8Gk4JuNmMbVxJNl46FKHUcFSU30rP4FJLqkOkYi0QDfnhj3hYHPrlCAiUNfg2Bp02ZaU85ua79Ifp2Bvf6KuZAgXl8nplXG1wImbaYorTZfHyh0CQxJWfU3g8TC8UwH9sn5aYr3vo36n0YUpzecm5VOedrJR_lcN9oJEj3L9WwU-obT26pDUVvfu1QB4VaXrtbJdgjjuZhD6aKJ6wJ45dRl0A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-[10px] font-cinzel text-brand-goldlight uppercase tracking-widest">Songwriting</span>
+<h4 class="text-sm font-cinzel font-bold text-white">Poetic Telugu Lyricism</h4>
+</div>
+</div>
+<!-- Keyboard Harmony -->
+<div class="relative group rounded-2xl overflow-hidden glass-card">
+<img alt="Tejanjali at the Synthesizer Keyboard" class="w-full h-56 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuAb1YrWfMv1M5NuaTt-oGKo5PT1YNcqxml81lMUFQ3RyO3pGZu769wCeb_0DORQXo9ragYVzoAKy1F13iKno5Elo6woKqJUR2_K2RHPUnGFKWjmcWqVGh-BncY-nBQyQTpfl-gw8NqkU4DXspyfqs6oqqf4yfldcC0cXjtYNW9_0aft3UlyeN-i-UVcBP1sFQBfs0ewEFLDOy2biAr5JLSlTVCyCNXUfqG61eRHf89jK6bBKvu6NX_Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<span class="text-[10px] font-cinzel text-brand-gold uppercase tracking-widest">Arrangements</span>
+<h4 class="text-sm font-cinzel font-bold text-white">Keyboard Harmonization</h4>
+</div>
+</div>
+<!-- Guitar & Acoustic Strings (Full Width of column) -->
+<div class="sm:col-span-2 relative group rounded-2xl overflow-hidden glass-card">
+<img alt="Tejanjali Sitting with Acoustic Guitar" class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9X48YWYrIyyJZcHRof73u6PUVuCbp7JfUFObZzlz6HfJl7wzn8z0iI5uN6W8Ro7WHC-e-5mPS-4246NU2IrixJCmIT3Wi8OGuN5ThZnCsPvmD5rPM2vxdt3Jxy4vt3Wwdiwoty8TqmDiqC2RrXcc-Mj8BDsRDUBgxDMIMPPpTPHsdqjfyBGYEzj-tHSndrrLg8pE2m8IekCop7towafu-bAjlMf_GdhyLsPbe8ZMyrLDaJ5ZJH6lIXw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+<span class="text-xs font-cinzel text-brand-amber tracking-widest uppercase">Strings &amp; Melody</span>
+<h4 class="text-lg font-cinzel font-bold text-white">Acoustic Melodies &amp; Song Craft</h4>
+<p class="text-xs text-gray-300 font-light">Melodic exploration using acoustic guitars and rhythmic chord layers as early foundations for cinematic tracks.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Piano Keys Decorative Ribbon -->
+<div class="mt-12 w-full overflow-hidden rounded-xl opacity-40 hover:opacity-75 transition-opacity border-y border-brand-gold/30">
+<img alt="Piano Keys Texture" class="w-full h-10 object-cover filter invert contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfwjmpP1OAUp4YWNMnD9F-_qrptmV_HS6hkSThn003-NJhvvc3-_pidPdS92dZVT_ya_5xMtsV5LV-jj1M2xR3A427LrvaTwCvp1GCV11E0oKpEpPYR4Pt1d0WFxFf4s31JWApULsi0fe7YkP5bDFrMmPIl1R6K0M9wQs2yjkR-hDHp_d6cW-Q9vtgbU3i7t_XxAYdsDbuamB49QPXY800lou5xauFvEGsK9hdAUWshVnRM-W-MX3PcA"/>
+</div>
+</div>
+</section>
+<!-- END: HerArtistrySection -->
+<!-- BEGIN: AudioVisualizerSection -->
+<section class="py-24 bg-gradient-to-b from-brand-charcoal via-brand-burgundy/40 to-brand-black relative" data-purpose="audio-experience" id="music">
+<div class="max-w-5xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase">Sonic Space</span>
+<h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-1">MUSIC IS HER LANGUAGE</h2>
+<p class="text-xs text-gray-400 mt-2">Immerse in the signature frequency and vocal textures of Tejanjali.</p>
+</div>
+<!-- Audiophile Player Card -->
+<div class="glass-card rounded-3xl p-6 sm:p-10 border border-brand-gold/30 shadow-2xl relative overflow-hidden">
+<!-- Ambient Background Glow -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+<!-- Rotating Disc Album Art -->
+<div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-brand-gold/40 shadow-gold-glow flex-shrink-0">
+<img alt="Tejanjali Portrait Disc Art" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkgsdZK_9VfxBg2UVRnN3ZHt7scmJqFR9-uqaOF55MpmhFtuFXVZGdpiEB9DPiND7qDKgdhiU-pX4BqlmuGDTJOmS3Jb3y5FYeEp1bDXcbgsYiA4axUOtTcBA3PYWlKUc2O7MYEId7Jc1c0vEVRqZvTkF8Kc5awgsIHGDpj2ZHVlSmeUW8G8YAHHGaYYwYfxO9uGpDHKa_O4QoFcvpjoLuctQgRDccshU3pQY6fEScH3_xjrJ-44BYuQ"/>
+<div class="absolute inset-0 bg-black/20 rounded-full"></div>
+<div class="absolute inset-0 m-auto w-8 h-8 rounded-full bg-brand-black border-2 border-brand-gold"></div>
+</div>
+<!-- Track Info & Interactive Player Controls -->
+<div class="w-full space-y-4">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold">Featured Production</span>
+<h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">Melodic Resonance • Raga Expressions</h3>
+<p class="text-xs text-gray-400">Tejanjali • Guided by Legendary Koti Garu</p>
+</div>
+<!-- Badges -->
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 text-[9px] uppercase tracking-wider font-bold rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/30">Carnatic Fusion</span>
+<span class="px-2.5 py-1 text-[9px] uppercase tracking-wider font-bold rounded-full bg-brand-amber/20 text-brand-amber border border-brand-amber/30">Telugu Cinema</span>
+</div>
+</div>
+<!-- Sound Waveform Graphic -->
+<div class="py-2">
+<img alt="Visualizer Waveform" class="w-full h-14 object-cover filter brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNKnzauthNXqtBIiACaxlio6EZKzM2RXysqyxsG5b1KuDa6uTT8uokauIv_H2UgZRp0EwgID8KuCg5jpWvQfSikz6d9uIboHf948Utd29B95QaewFMnjec92XqwsJu2bDmsyYniZDHhdB5Jo8bIzfKNFz-azVcmNR3cSTxbVBDBQal6kVxL7eR2haPIvYdrmj3tsx5Tdhb9bpZBKoDUo5_CjAuU2drza1IifxTTgpxwc_8YwV1ea5y2A"/>
+</div>
+<!-- Scrubber Track & Timers -->
+<div class="space-y-1">
+<div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden cursor-pointer">
+<div class="w-2/5 h-full bg-gradient-to-r from-brand-amber to-brand-gold rounded-full"></div>
+</div>
+<div class="flex justify-between text-[10px] text-gray-400 font-mono">
+<span>01:28</span>
+<span>03:45</span>
+</div>
+</div>
+<!-- Media Player Buttons -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-4">
+<button aria-label="Previous Track" class="text-gray-400 hover:text-white transition-colors">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
+</button>
+<button aria-label="Play or Pause" class="w-12 h-12 rounded-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-black flex items-center justify-center shadow-gold-glow hover:scale-105 active:scale-95 transition-all">
+<svg class="w-5 h-5 ml-0.5 fill-current" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<button aria-label="Next Track" class="text-gray-400 hover:text-white transition-colors">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
+</button>
+</div>
+<!-- Audio Quality Badge -->
+<div class="text-right">
+<span class="text-[10px] uppercase tracking-widest text-brand-gold font-semibold">Lossless Studio Master</span>
+<p class="text-[9px] text-gray-500 font-mono">24-Bit / 96kHz Fidelity</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AudioVisualizerSection -->
+<!-- BEGIN: VasaviSakshatkaramSection -->
+<section class="py-28 bg-brand-black relative overflow-hidden border-t border-brand-gold/20" data-purpose="vasavi-flagship-feature" id="vasavi">
+<!-- Atmospheric Lighting -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<img alt="Backdrop Glow" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Qvq28uVj54uEPWV3MGBnxulNer54lfzT2NFcCJIgScURfu7UilFVZf-6oVvVyPEUd6nlulwasrvKw1dxUPqsKQd5lFNF-BROWR93lVpcA1mBwNJXuv7Ukd3GVDvZ_i-y-c1FkNwA4lWA_MBI_0M00JjmmmwoxWyMBFSUKaD2tXZLow_Rr2XhA1bKHj6FI4LTZBlp1kddIG4KVLoDWfXrCTmIBn4-l6WlyJgaGjGVY5muyRL8nxsrBw"/>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<!-- Section Header with Badges -->
+<div class="max-w-3xl mb-16">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-3 py-1 text-[10px] uppercase tracking-widest font-extrabold rounded-full bg-red-600/20 text-red-400 border border-red-500/30">
+            T-Series Release
+          </span>
+<span class="px-3 py-1 text-[10px] uppercase tracking-widest font-extrabold rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/30">
+            Flagship Production
+          </span>
+<span class="px-3 py-1 text-[10px] uppercase tracking-widest font-extrabold rounded-full bg-purple-600/20 text-purple-300 border border-purple-500/30">
+            Devotional Masterpiece
+          </span>
+</div>
+<h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">
+          VASAVI SAKSHATKARAM
+        </h2>
+<p class="text-sm md:text-base text-gray-300 mt-3 font-light leading-relaxed">
+          A grand divine cinematic tribute celebrating Sri Vasavi Kanyaka Parameswari. Tejanjali served with commanding leadership as both <strong>Lead Actress</strong> and <strong>Executive Producer</strong>, orchestrating classical dance ensembles, choral vocals, and divine visual storytelling.
+        </p>
+</div>
+<!-- Feature Visual Collage -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Vasavi Divine Portrait (Left 5 Cols) -->
+<div class="lg:col-span-5 relative">
+<div class="rounded-3xl overflow-hidden border-2 border-brand-gold/40 shadow-2xl p-2 bg-gradient-to-b from-brand-gold/30 to-brand-wine/20 group">
+<div class="relative rounded-2xl overflow-hidden">
+<img alt="Tejanjali in Traditional Silk Saree holding Diya as Goddess Vasavi" class="w-full h-[460px] sm:h-[520px] object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpkjRdeFsBCt67QJvcEQtvb4K76wR_xYGLm9geN55W4mBmlj6TcwtgOn-cjFJeEJjF4gH8pzy6_Q_SbgBl8ild1T4Q79BoRD9srPpwZITH7jrVPVac0B9eAKcyicY4FtFOJmqXsij8LMcpIKSxFsolZ-1IowdwkMqSU-nvdeIGZO4FX-jCb2lLZFy6lesi18RAw5FIcmBURjeFri_5u0UE9b96JQFAWs_Gan9Co8Bc98jZ9NQnkXd_eQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-center">
+<span class="text-xs uppercase tracking-[0.25em] text-brand-gold font-bold">Divine Character Portrayal</span>
+<h3 class="font-cinzel text-2xl font-bold text-white mt-1">Lead Presence • Goddess Vasavi</h3>
+<p class="text-xs text-amber-200/80 mt-1">Expressing sanctity, devotion, and celestial grace</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Ensemble & Production Pipeline (Right 7 Cols) -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Classical Troupe Picture -->
+<div class="rounded-2xl overflow-hidden border border-brand-gold/30 shadow-xl group relative">
+<img alt="Tejanjali with Grand Classical Temple Dance Ensemble" class="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgzAu7DKIV4-irEgruNDdVCFRx6g51Uo0t-CuWLodQcjp-nuXiUpjPmNCyTSNuFPij8KNmZ8X9J3MKQqnlAJj9kreq5dU1jI2uVc-VSbyz0Khj4-DHSJWq4c1EqOKSiEoeRuO90H8DGYK_DAg4qr8_VDzbngbegtX0MSNshF6RBX0RNFO78eQu5THJi0zv9FCbjRo9bh7ZNbA6k0ZjDQ4UwgsH6jf7Er-eUIHuQZBsYt5-QZiW4b24Bw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5">
+<span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold font-cinzel">Choreography • Temple Grandeur</span>
+<p class="text-sm font-semibold text-white">Full Ensemble Dance Direction at Historic Temple Sanctum</p>
+</div>
+</div>
+<!-- Production Roles Breakdown Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">01 • LEADERSHIP</span>
+<p class="text-xs font-cinzel font-semibold text-white">Executive Producer</p>
+</div>
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">02 • SCREEN</span>
+<p class="text-xs font-cinzel font-semibold text-white">Lead Character</p>
+</div>
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">03 • VOCAL</span>
+<p class="text-xs font-cinzel font-semibold text-white">Choral &amp; Melody</p>
+</div>
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">04 • MOVEMENT</span>
+<p class="text-xs font-cinzel font-semibold text-white">Classical Dance</p>
+</div>
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">05 • CINEMA</span>
+<p class="text-xs font-cinzel font-semibold text-white">Video Production</p>
+</div>
+<div class="p-3.5 rounded-xl glass-card text-center">
+<span class="text-brand-gold text-xs font-bold block mb-1">06 • LABEL</span>
+<p class="text-xs font-cinzel font-semibold text-white">T-Series Release</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: VasaviSakshatkaramSection -->
+<!-- BEGIN: BehindTheCreationSection -->
+<section class="py-20 bg-brand-charcoal border-y border-brand-gold/10" data-purpose="production-pipeline">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center max-w-xl mx-auto mb-14">
+<p class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase mb-1">End-to-End Execution</p>
+<h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-white">BEHIND THE CREATION</h2>
+<div class="w-16 h-0.5 bg-brand-gold mx-auto mt-2"></div>
+</div>
+<!-- Linear Step Sequence -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">01</span>
+<h4 class="text-xs font-bold uppercase text-white">Concept</h4>
+<p class="text-[10px] text-gray-400 mt-1">Vision &amp; Lyric Mood</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">02</span>
+<h4 class="text-xs font-bold uppercase text-white">Music</h4>
+<p class="text-[10px] text-gray-400 mt-1">Raga &amp; Melodic Draft</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">03</span>
+<h4 class="text-xs font-bold uppercase text-white">Audio</h4>
+<p class="text-[10px] text-gray-400 mt-1">Studio Master Tracks</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">04</span>
+<h4 class="text-xs font-bold uppercase text-white">Video</h4>
+<p class="text-[10px] text-gray-400 mt-1">Cinematic Filming</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">05</span>
+<h4 class="text-xs font-bold uppercase text-white">Team</h4>
+<p class="text-[10px] text-gray-400 mt-1">Direction &amp; Talent</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">06</span>
+<h4 class="text-xs font-bold uppercase text-white">Marketing</h4>
+<p class="text-[10px] text-gray-400 mt-1">Global Promotions</p>
+</div>
+<div class="p-4 rounded-xl glass-card text-center relative group bg-brand-gold/20 border-brand-gold/50">
+<span class="text-xs font-cinzel font-bold text-brand-gold block mb-1">07</span>
+<h4 class="text-xs font-bold uppercase text-brand-gold">Release</h4>
+<p class="text-[10px] text-gray-200 mt-1">T-Series &amp; DSPs</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: BehindTheCreationSection -->
+<!-- BEGIN: LivePerformanceSection -->
+<section class="py-28 bg-brand-black relative overflow-hidden" data-purpose="live-stage-feature" id="live-performance">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Live Concert Visual (7 Cols) -->
+<div class="lg:col-span-7 relative group rounded-3xl overflow-hidden border-2 border-brand-gold/30 shadow-2xl">
+<img alt="Tejanjali Singing Live on Stage at GAMA Dubai" class="w-full h-[400px] sm:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB48y9AwJSuWd4F7DV6Fjt4n47NTLxnjZHSzBC36KadNmwfZxQXWQ-aflRncCFj14obplAKi5D5MynHJspXSTyJh4ZosTP_ImIdblGP8OC-ZUytktgrwKX6QuRJAA4PTuccc_2G-NIVINTJLiGeAoreC1Q8Ru0Wur_JorsfuD5aK7nU4SlqC9L8Z_vhBgHftB752mb54jmStx0j9168MSz5QPtXWOBtX1rExshAuUYWpiNndBTHil-3Vg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 backdrop-blur-md w-max mb-2">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+<span class="text-[10px] font-cinzel font-bold tracking-widest text-brand-gold uppercase">GAMA Dubai • Live Concert</span>
+</div>
+<h3 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Commanding the Grand Stage</h3>
+<p class="text-xs sm:text-sm text-gray-300 mt-1">Unforgettable live concert synergy, electrifying audiences with iconic Telugu playback melodies.</p>
+</div>
+</div>
+<!-- Stage Persona Editorial Text (5 Cols) -->
+<div class="lg:col-span-5 space-y-6">
+<span class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase">Performance Aura</span>
+<h2 class="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            COMMANDING THE STAGE
+          </h2>
+<div class="w-20 h-0.5 bg-brand-gold"></div>
+<p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed">
+            Dynamic stage presence. Unique vocal style. Graceful yet high-energy performances that hold arenas captive. Tejanjali brings the exact blend of theatrical grace and vocal prowess demanded by international stages.
+          </p>
+<div class="space-y-3 pt-2">
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+<p class="text-xs sm:text-sm text-gray-300"><strong>International Galas:</strong> Headlined premier cultural celebrations, including GAMA in Dubai.</p>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+<p class="text-xs sm:text-sm text-gray-300"><strong>High-Energy Medleys:</strong> Fluid transition from classical devotional chants to foot-tapping mass anthems.</p>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+<p class="text-xs sm:text-sm text-gray-300"><strong>Duo Synchrony:</strong> Masterful co-singing dynamics alongside renowned playback maestros.</p>
+</div>
+</div>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-wine hover:bg-brand-deepwine border border-brand-gold/40 text-brand-gold font-cinzel text-xs font-bold tracking-widest uppercase transition-all shadow-wine-glow" href="#contact">
+              Book Concert Performance
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: LivePerformanceSection -->
+<!-- BEGIN: TestimonialSection -->
+<section class="py-24 bg-gradient-to-b from-brand-black via-brand-burgundy/20 to-brand-black relative" data-purpose="critics-testimonial">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<!-- Decorative Quotation Icon -->
+<div class="w-12 h-12 mx-auto mb-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold font-serif text-3xl">
+        “
+      </div>
+<blockquote class="font-cinzel text-xl sm:text-2xl md:text-3xl font-medium text-white/95 leading-relaxed tracking-wide">
+        “Tejanjali’s seamless blend of vocal performance and expressive dance elevates her stage presence to an exceptional level, commanding the audience’s full attention and making it impossible for them to look away.”
+      </blockquote>
+<div class="w-16 h-0.5 bg-brand-gold mx-auto my-6"></div>
+<div class="text-center">
+<p class="text-sm font-cinzel font-bold tracking-[0.25em] text-brand-gold uppercase">Anna Katrina Marchesi</p>
+<p class="text-xs tracking-wider text-gray-400 uppercase mt-0.5">International Performance Critic &amp; Arts Reviewer</p>
+</div>
+</div>
+</section>
+<!-- END: TestimonialSection -->
+<!-- BEGIN: GallerySection -->
+<section class="py-28 bg-brand-black border-t border-brand-gold/10" data-purpose="moments-in-music-gallery" id="gallery">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-baseline justify-between mb-12">
+<div>
+<span class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase">Visual Portfolio</span>
+<h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mt-1">MOMENTS IN MUSIC</h2>
+</div>
+<!-- Static Category Tags -->
+<div class="flex flex-wrap items-center gap-2 mt-4 md:mt-0 text-xs font-medium">
+<span class="px-4 py-1.5 rounded-full bg-brand-gold text-brand-black font-semibold uppercase">All</span>
+<span class="px-4 py-1.5 rounded-full glass-card text-gray-300 hover:text-brand-gold uppercase">Live Stage</span>
+<span class="px-4 py-1.5 rounded-full glass-card text-gray-300 hover:text-brand-gold uppercase">Studio</span>
+<span class="px-4 py-1.5 rounded-full glass-card text-gray-300 hover:text-brand-gold uppercase">Classical</span>
+</div>
+</div>
+<!-- Masonry-like Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Photo 1: Hero Mic Stage -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Tejanjali Singing Live" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc8nTPSOj-DiO9v8otcg20LW9k8GYZMJaXpJnNJpMRWGA-UQqQME04v09MYEzi1h4cfBW4MQLaQAdoX1vlPHxDc0DV5syOPNRZY40p6SqY8VKGaklPGp0nQQZ8vXub8CdDaa_EP4kqa0SMrqyR6F2AkxtWkYodd5yMdkfsZJUOmhXw0ssJtu143tSU7GKhmMxzeLOj12QPesHtZH6pMxkcGnRMUutvkR8d0xpWS3A3plUDhdhniM85Yw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Concert Stage</span>
+<p class="text-xs font-bold text-white">Live Vocal Delivery</p>
+</div>
+</div>
+<!-- Photo 2: Traditional Veena -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Tejanjali with Veena" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKBcnrZur1Pu2R3J4LDp_b6HEsmldhNQObwBtRVIiVw5AyUr57cP4a7mmb8-a09RMEbS6_kYPHgLlBdJAASbtv9PExmxDWBJNp04XlQQ5XAhtOwGZDWrcI4Iuuf3UqURkyhRVryVBNECJMQmB4SdjLuqBbpEAIru4W_8hgPpqyqONP434JQzTYFcPFzZFxiBFmxLLwPs6mu2cJCQqtgD0I6PIxEF2YamOXqyBTyEzDx4ESjB8Z7onq9g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Heritage</span>
+<p class="text-xs font-bold text-white">Veena Classical Discipline</p>
+</div>
+</div>
+<!-- Photo 3: Mentorship with Koti -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="With Koti Garu in Studio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRFMimwwYhSoIjQJdmqaUBe66rgWBiFjB_Nvr2iuCbMStOnXR_UdpaqC0lPfhI2B6eFJgMJI426cUJOCOvIvRRYDqocSQOv-lYyEnL7L2QmRnRxwF808LbV8fsoGlueBzu6eMO1zS0Sb4sw1cP6c1X7w65mZe8udic79GSE2YD58uCtAkXxL8HNWec0kMRdzf_uvMNV2htL8OmxS1X8zD2Ybrne-Pwqpjf7AMKVpZKWUlsYJvQwOD1Xg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Industry Master</span>
+<p class="text-xs font-bold text-white">With Legendary Koti Garu</p>
+</div>
+</div>
+<!-- Photo 4: Studio Headphones Vocal -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Studio Vocal Recording" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKteE_ZXBSvfEftkujm59nnfi91hAmwtALXid0j6hDl793UMqkhlyvonFZAgdTAAWWvAGk0baO1o3IJlj5ZP3JaUNhVmLTpphs_0nz-53F67h7PLfuOvZjyA3xEYayOdlYFUkEGK7mKaLN2kG7Z5tswz4zpE597GKscd94ZuYaa9t0ScuyjbQn1WJm476otqdpN5uWtI2dMNcsdZqZ1IJF-u8yh_5_o4qikYhMxdUpkERZnxtxLgWu9g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Recording</span>
+<p class="text-xs font-bold text-white">Vocal Studio Tracking</p>
+</div>
+</div>
+<!-- Photo 5: Goddess Vasavi Diya -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Vasavi Character with Diya" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPusE8WuxcoJiDNIvcyUuxFX-T1WYP5LdDZY4WvkgAT3IYXs_im36vJ6Ut0QnidqthCVwPzPVcFZrKLjXxOAD4oBaOE38RcFxMKqAQywRhc3QNeUBqycTHNbD8o0Z2XF3vK5Aw7iERyPcdufEfBnRrGfSscJ3O0_HRK1vF08IsYQnF7zO5tOlKKtEAvl7ycwaQfmyk49cgCeVo325v8OtZlPVRbkXdf-KB2vGCrkeyNIXcJWw2SMXa4Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Lead Character</span>
+<p class="text-xs font-bold text-white">Sri Vasavi Sakshatkaram</p>
+</div>
+</div>
+<!-- Photo 6: Acoustic Guitar Melody -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Tejanjali with Guitar" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCp2n50kSWNOUj0RHcdq5djUL645Rp4iPEXuHk3HhHpQC0Xf9FhbgPqZbkCMbJOAYfutBsAbr171GG7K-rqlCRHjiT6WUv3k5fxwA6aHO8KxYUxbk0DInpfsy_l-uwShS-yth98asBnW0tlTHzCjXjqh5f_ezQY1grEuY85dkYrrOMsZVkal6RG1s3bPOXynfcv-z91vMScr187QUxX7DE9YGoJEosp-DN8v57ES0NlT6h7FSCrUOaww"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Acoustics</span>
+<p class="text-xs font-bold text-white">Guitar Melodies</p>
+</div>
+</div>
+<!-- Photo 7: Lyrics Composition Notebook -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Tejanjali Writing Composition" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6bPyT-6DZ6nMRPQ3Wm5y0-J_UWiZ8SbarSW1Qo8ofd_mginjJBS21Xt23Bb962oDfte0OIT3vGLTnw5KHRoV1soKG4uwh_EMEu5urF7pBX5aoLM4BnU4edKzysH4cd0X6ZIcp1urcc6G7ojIN1rXFOJYFkBbulivkQtemTpo7OfG1REV4eyRB3zYuIBx_aTLVHJ0jeMjwxmH4O6v0-ywZjDZoAyQYxQv1oXEHngmnQMAr0NQZsLAqgA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Creation</span>
+<p class="text-xs font-bold text-white">Telugu Songwriting</p>
+</div>
+</div>
+<!-- Photo 8: Grand Dance Ensemble -->
+<div class="relative group rounded-2xl overflow-hidden glass-card h-80">
+<img alt="Temple Dance Ensemble" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr_dXPgunMp7gVGcXYqGi5fx8fZjERweoieCZG2ciuAulUMAGXQlwt_HRkO28AnfNKGvAYjdwgoPpLLvO3C1qU61IHFIPqASGNox8z8xg429s5tRIgKmCrfw4oSPKt24baI0oLkcH5RJjZ2KGpFZxuhoKkjWdb-ofYLG72npz_kbrGhdhzTFBcRFPj-ZZIK1WOv2WkqKXlxZDYzDeLyMfhNRnhWUr08iTb6WC24SFl-JVbyUa_tF0rLg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<span class="text-[10px] uppercase font-bold text-brand-gold">Choreography</span>
+<p class="text-xs font-bold text-white">Temple Classical Dance</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: GallerySection -->
+<!-- BEGIN: ContactBookingSection -->
+<section class="py-28 bg-gradient-to-b from-brand-black via-brand-burgundy/60 to-brand-black relative overflow-hidden" data-purpose="booking-cta" id="contact">
+<!-- Radiant Backdrop Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-brand-wine/50 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-5xl mx-auto px-6 relative z-10">
+<div class="glass-card rounded-3xl p-8 sm:p-14 border border-brand-gold/40 shadow-2xl text-center">
+<!-- Musical Note Floating Crest -->
+<div class="w-16 h-16 mx-auto mb-6 rounded-full bg-brand-gold/20 border-2 border-brand-gold flex items-center justify-center shadow-gold-glow">
+<img alt="Musical Note Logo" class="w-6 h-10 object-contain filter drop-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHv3giUqqkLxNdTlXPScroTfAkIsCpMtQ26QP0uRw6UiFelXzPy4g55ewK4IGSwscoOHsS94zYGOtp6fCPQxVFtkKjCuXhfGPnbKP3yCVMWzv0gjS0-nU0uZDzWUc-RFivWSryJWPTtinCQy7HacqT-84GVnY3e94pzRmfkdOg4JMNViYR_a2l30i0fZ2fhGWyJcAIiR0KdZ1pee_r9iFIamHOcO33UId0VU2lLaoBiDTJyqukbxmY_Q"/>
+</div>
+<span class="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase block mb-2">Collaboration • Live Bookings</span>
+<h2 class="font-cinzel text-3xl sm:text-5xl font-black text-white tracking-tight">
+          LET’S CREATE SOMETHING MUSICAL
+        </h2>
+<p class="text-sm md:text-base text-gray-300 max-w-2xl mx-auto mt-4 font-light leading-relaxed">
+          Available for live concert bookings, playback singing, film soundtrack compositions, corporate &amp; cultural festivals, and high-impact media production collaborations.
+        </p>
+<!-- Booking Categories Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10 max-w-3xl mx-auto text-left">
+<div class="p-3.5 rounded-xl bg-black/40 border border-brand-gold/20">
+<span class="text-brand-gold text-xs block font-bold font-cinzel">01</span>
+<p class="text-xs font-semibold text-white mt-1">Live Concerts &amp; World Tours</p>
+</div>
+<div class="p-3.5 rounded-xl bg-black/40 border border-brand-gold/20">
+<span class="text-brand-gold text-xs block font-bold font-cinzel">02</span>
+<p class="text-xs font-semibold text-white mt-1">Film Playback &amp; Studio Vocals</p>
+</div>
+<div class="p-3.5 rounded-xl bg-black/40 border border-brand-gold/20">
+<span class="text-brand-gold text-xs block font-bold font-cinzel">03</span>
+<p class="text-xs font-semibold text-white mt-1">Cultural &amp; Corporate Galas</p>
+</div>
+<div class="p-3.5 rounded-xl bg-black/40 border border-brand-gold/20">
+<span class="text-brand-gold text-xs block font-bold font-cinzel">04</span>
+<p class="text-xs font-semibold text-white mt-1">Executive Media Production</p>
+</div>
+</div>
+<!-- Direct CTA Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="px-8 py-4 rounded-full bg-gradient-to-r from-brand-gold via-brand-goldlight to-brand-gold text-brand-black font-cinzel font-bold text-xs uppercase tracking-widest shadow-gold-glow-lg hover:scale-105 active:scale-95 transition-all" href="mailto:contact@tejanjaliofficial.com">
+            Book For An Event
+          </a>
+<a class="px-8 py-4 rounded-full glass-card text-white font-cinzel font-semibold text-xs uppercase tracking-widest hover:border-brand-gold hover:text-brand-goldlight transition-all" href="#about">
+            Contact Management
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ContactBookingSection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-charcoal border-t border-brand-gold/15 py-14" data-purpose="global-footer">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/10">
+<!-- Logo Branding -->
+<div class="flex items-center gap-3">
+<img alt="Tejanjali Monogram" class="w-6 h-10 object-contain filter drop-shadow-[0_0_8px_#d4af37]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhlq0I7EQbcKl65F3qwyrGZelWHBYmy46vDoOYkt-zy4jL_mgvSCnN-5GR6iTARSDkVj3T0ZyzhdRIRql00ddksGT1mYoM6QecopB4CMtNvuGx-S9QjGTGFhRGeWR9ufTp1z1lh3yfVvQAlLefRAhKdUJZKLdf92Ha4UXoYpJsTjSx4xZfWYOj2Ivry2XoxqM5FbPPHFZ6h_Oh4Zxiz3izEXFQFPLZkrJazD-JtghQGgn2QneiOJ2Lfg"/>
+<div>
+<span class="font-cinzel text-2xl font-black tracking-[0.25em] text-gold-gradient block">TEJANJALI</span>
+<span class="text-[10px] uppercase tracking-[0.25em] text-gray-400">Chief Associate to Legendary Koti Garu</span>
+</div>
+</div>
+<!-- Quick Jump Links -->
+<div class="flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-widest text-gray-400">
+<a class="hover:text-brand-gold transition-colors" href="#hero">Home</a>
+<a class="hover:text-brand-gold transition-colors" href="#about">About</a>
+<a class="hover:text-brand-gold transition-colors" href="#identity">Identity</a>
+<a class="hover:text-brand-gold transition-colors" href="#journey">Journey</a>
+<a class="hover:text-brand-gold transition-colors" href="#artistry">Artistry</a>
+<a class="hover:text-brand-gold transition-colors" href="#vasavi">Vasavi</a>
+<a class="hover:text-brand-gold transition-colors" href="#gallery">Gallery</a>
+</div>
+<!-- Social Icons (Stylized SVGs) -->
+<div class="flex items-center gap-4 text-brand-gold">
+<!-- YouTube -->
+<a aria-label="YouTube Channel" class="w-9 h-9 rounded-full bg-white/5 border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-black transition-all" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+<!-- Spotify -->
+<a aria-label="Spotify Profile" class="w-9 h-9 rounded-full bg-white/5 border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-black transition-all" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.498 17.31c-.22.36-.68.48-1.04.26-2.86-1.75-6.46-2.15-10.7-1.18-.41.09-.82-.16-.91-.57-.09-.41.16-.82.57-.91 4.63-1.06 8.62-.61 11.82 1.35.36.22.48.69.26 1.05zm1.46-3.26c-.28.45-.87.59-1.32.31-3.27-2.01-8.25-2.59-12.12-1.42-.51.15-1.04-.14-1.19-.65-.15-.51.14-1.04.65-1.19 4.42-1.34 9.91-.69 13.67 1.63.45.28.59.87.31 1.32zm.13-3.4c-3.93-2.33-10.42-2.55-14.18-1.41-.6.18-1.24-.16-1.42-.76-.18-.6.16-1.24.76-1.42 4.33-1.31 11.51-1.06 16.02 1.62.54.32.72 1.03.4 1.57-.32.54-1.03.72-1.58.4z"></path></svg>
+</a>
+<!-- Instagram -->
+<a aria-label="Instagram Profile" class="w-9 h-9 rounded-full bg-white/5 border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-black transition-all" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Copyright & Discipline Line -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+<p>Singer • Lyricist • Composer • Performer • Executive Producer • Anchor</p>
+<p>© 2026 TEJANJALI. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

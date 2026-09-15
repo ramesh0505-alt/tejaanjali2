@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html class="h-full bg-[#171414]" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tejanjali | Artist Studio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: { 950: '#120f0e', 900: '#171414', 850: '#1d1918', 800: '#211B19', 700: '#29211E', 600: '#3A302C', 500: '#524540' },
+            terracotta: { 400: '#cb7159', 500: '#B75D45', 600: '#a24f38', 700: '#843d2a' },
+            rose: { 400: '#b87c82', 500: '#A66A70', 600: '#8c5359' },
+            ivory: { 50: '#fcfaf7', 100: '#F2E9DC', 200: '#e1d4c2', 300: '#c5b59e', muted: '#B9AAA0' },
+            brass: '#A88B5A', olive: '#74745B',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+    const token = localStorage.getItem('adminToken');
+    if (!token) window.location.href = '/admin/login.html';
+  </script>
+<style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #171414; }
+    ::-webkit-scrollbar-thumb { background: #3A302C; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #524540; }
+    [x-cloak] { display: none !important; }
+</style>
+</head>
+<body class="h-full font-sans text-ivory-100 bg-espresso-900 antialiased flex overflow-hidden" x-data="adminApp()">
+
+<!-- MOBILE HEADER -->
+<div class="lg:hidden fixed top-0 left-0 right-0 h-14 bg-espresso-850 border-b border-espresso-600 flex items-center justify-between px-4 z-40">
+    <div class="font-serif text-lg tracking-widest text-ivory-100 uppercase">Tejanjali</div>
+    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-ivory-100 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+</div>
+
+<!-- SIDEBAR -->
+<aside :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'" class="fixed lg:static inset-y-0 left-0 w-64 bg-espresso-900 border-r border-espresso-600 flex flex-col justify-between z-50 transition-transform duration-300 h-full mt-14 lg:mt-0 pt-0">
+<div class="flex flex-col h-full overflow-y-auto">
+    <div class="hidden lg:block px-6 py-6 border-b border-espresso-600/70">
+        <div>
+            <span class="block font-serif text-2xl tracking-[0.2em] font-semibold text-ivory-100 uppercase">Tejanjali</span>
+            <span class="text-[11px] uppercase tracking-widest text-terracotta-400 font-medium">Artist Studio</span>
+        </div>
+        <div class="mt-2 flex items-center gap-1.5 text-[10px] text-emerald-400 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Website Live
+        </div>
+    </div>
+    <nav class="p-4 space-y-6 text-sm">
+        <div>
+            <a href="#" @click.prevent="setView('dashboard')" :class="currentView === 'dashboard' ? 'bg-espresso-700 text-ivory-100 border-l-2 border-terracotta-500' : 'text-ivory-muted hover:text-ivory-100'" class="flex items-center gap-3 px-3 py-2.5 rounded-md font-medium transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span>Dashboard</span>
+            </a>
+        </div>
+        <div>
+            <div class="px-3 mb-2 text-[10px] font-semibold uppercase tracking-wider text-ivory-muted/60">WEBSITE</div>
+            <ul class="space-y-1">
+                <li><a href="#" @click.prevent="setView('homepage')" :class="currentView === 'homepage' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Homepage</a></li>
+                <li><a href="#" @click.prevent="setView('about')" :class="currentView === 'about' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">About</a></li>
+                <li><a href="#" @click.prevent="setView('journey')" :class="currentView === 'journey' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Journey</a></li>
+                <li><a href="#" @click.prevent="setView('artistry')" :class="currentView === 'artistry' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Artistry</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="px-3 mb-2 text-[10px] font-semibold uppercase tracking-wider text-ivory-muted/60">CONTENT</div>
+            <ul class="space-y-1">
+                <li><a href="#" @click.prevent="setView('music')" :class="currentView === 'music' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Music</a></li>
+                <li><a href="#" @click.prevent="setView('projects')" :class="currentView === 'projects' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Projects</a></li>
+                <li><a href="#" @click.prevent="setView('photos')" :class="currentView === 'photos' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Photos</a></li>
+                <li><a href="#" @click.prevent="setView('testimonials')" :class="currentView === 'testimonials' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Testimonials</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="space-y-1">
+                <li>
+                    <a href="#" @click.prevent="setView('messages')" :class="currentView === 'messages' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex items-center justify-between px-3 py-2 rounded-md transition-colors">
+                        <span>Messages</span>
+                        <span x-show="inquiries.length > 0" x-text="inquiries.length" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-terracotta-500 text-white"></span>
+                    </a>
+                </li>
+                <li><a href="#" @click.prevent="setView('settings')" :class="currentView === 'settings' ? 'bg-espresso-800 text-terracotta-400' : 'text-ivory-muted hover:bg-espresso-800/40'" class="flex px-3 py-2 rounded-md transition-colors">Settings</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="mt-auto p-4 border-t border-espresso-600/60 bg-espresso-850">
+        <a class="flex items-center justify-between text-xs text-brass hover:text-ivory-100 font-medium mb-3 px-1 transition-colors" href="/" target="_blank">
+            <span>View Website ↗</span>
+        </a>
+        <div class="flex items-center justify-between pt-2 border-t border-espresso-600">
+            <button @click="logout()" class="text-xs text-ivory-muted hover:text-rose-400 py-2">Logout</button>
+        </div>
+    </div>
+</div>
+</aside>
+<div x-show="mobileMenuOpen" @click="mobileMenuOpen = false" class="fixed inset-0 bg-black/50 z-40 lg:hidden"></div>
+
+<!-- MAIN CONTENT -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-espresso-900 mt-14 lg:mt-0">
+    <header class="h-16 shrink-0 bg-espresso-850 border-b border-espresso-600 px-6 flex items-center justify-between z-20">
+        <h1 class="font-serif text-xl font-medium text-ivory-100 tracking-wide capitalize" x-text="currentViewTitle()">Dashboard</h1>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-3 bg-espresso-800 px-3 py-1.5 rounded-full border border-espresso-600">
+                <img x-show="getImageUrl(formData.hero_image)" :src="getImageUrl(formData.hero_image)" class="w-7 h-7 rounded-full object-cover">
+                <span class="text-xs font-medium text-ivory-100 pr-1">Tejanjali</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 md:px-8 py-8 w-full max-w-[1250px] mx-auto relative">
+        
+        <!-- DASHBOARD -->
+        <section x-show="currentView === 'dashboard'" x-cloak class="space-y-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="font-serif text-3xl font-medium text-ivory-100 mb-2">Good evening, Tejanjali</h2>
+                    <p class="text-sm text-ivory-muted">Manage your music, photos, projects and website content.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 text-xs font-medium text-emerald-400 bg-emerald-400/10 px-3 py-1.5 rounded-full border border-emerald-400/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> WEBSITE LIVE
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistics -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-5 rounded-lg bg-espresso-800 border border-espresso-600 flex flex-col justify-between h-28">
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">SONGS</p>
+                    <p class="text-4xl font-serif text-ivory-100" x-text="songs.length">0</p>
+                </div>
+                <div class="p-5 rounded-lg bg-espresso-800 border border-espresso-600 flex flex-col justify-between h-28">
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">PROJECTS</p>
+                    <p class="text-4xl font-serif text-ivory-100" x-text="projects.length">0</p>
+                </div>
+                <div class="p-5 rounded-lg bg-espresso-800 border border-espresso-600 flex flex-col justify-between h-28">
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">PHOTOS</p>
+                    <p class="text-4xl font-serif text-ivory-100" x-text="photos.length">0</p>
+                </div>
+                <div class="p-5 rounded-lg bg-espresso-800 border border-espresso-600 flex flex-col justify-between h-28">
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">MESSAGES</p>
+                    <p class="text-4xl font-serif text-ivory-100" x-text="inquiries.length">0</p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="space-y-4">
+                <h3 class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">Quick Actions</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button @click="setView('music')" class="flex items-center gap-3 p-4 bg-espresso-800 border border-espresso-600 hover:border-terracotta-500 rounded-lg text-left transition-colors group">
+                        <div class="w-8 h-8 rounded bg-espresso-900 flex items-center justify-center text-terracotta-400 group-hover:bg-terracotta-500 group-hover:text-white transition-colors">+</div>
+                        <div><p class="text-sm font-medium text-ivory-100">Add Song</p></div>
+                    </button>
+                    <button @click="setView('projects')" class="flex items-center gap-3 p-4 bg-espresso-800 border border-espresso-600 hover:border-terracotta-500 rounded-lg text-left transition-colors group">
+                        <div class="w-8 h-8 rounded bg-espresso-900 flex items-center justify-center text-terracotta-400 group-hover:bg-terracotta-500 group-hover:text-white transition-colors">+</div>
+                        <div><p class="text-sm font-medium text-ivory-100">Add Project</p></div>
+                    </button>
+                    <button @click="setView('photos')" class="flex items-center gap-3 p-4 bg-espresso-800 border border-espresso-600 hover:border-terracotta-500 rounded-lg text-left transition-colors group">
+                        <div class="w-8 h-8 rounded bg-espresso-900 flex items-center justify-center text-terracotta-400 group-hover:bg-terracotta-500 group-hover:text-white transition-colors">+</div>
+                        <div><p class="text-sm font-medium text-ivory-100">Upload Photos</p></div>
+                    </button>
+                    <button @click="setView('homepage')" class="flex items-center gap-3 p-4 bg-espresso-800 border border-espresso-600 hover:border-terracotta-500 rounded-lg text-left transition-colors group">
+                        <div class="w-8 h-8 rounded bg-espresso-900 flex items-center justify-center text-terracotta-400 group-hover:bg-terracotta-500 group-hover:text-white transition-colors">✎</div>
+                        <div><p class="text-sm font-medium text-ivory-100">Edit Homepage</p></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Website Preview (2 cols) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">Your Website</h3>
+                    <div class="bg-espresso-800 border border-espresso-600 rounded-lg overflow-hidden relative">
+                        <!-- Mini Preview -->
+                        <div class="h-64 relative bg-espresso-950 overflow-hidden">
+                            <img x-show="getImageUrl(formData.hero_image)" :src="getImageUrl(formData.hero_image)" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                            <div class="absolute inset-0 bg-gradient-to-t from-espresso-950 via-espresso-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                                <h4 class="font-serif text-3xl font-bold tracking-[0.2em] uppercase text-ivory-100" x-text="formData.hero_name || 'TEJANJALI'"></h4>
+                                <p class="text-xs text-brass mt-2 tracking-widest uppercase" x-text="formData.hero_roles"></p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-espresso-850 flex justify-between items-center border-t border-espresso-600">
+                            <div class="text-xs text-ivory-muted">Live Preview</div>
+                            <div class="flex gap-2">
+                                <a href="/" target="_blank" class="px-4 py-1.5 text-xs font-medium border border-espresso-600 rounded hover:bg-espresso-700">Open Website</a>
+                                <button @click="setView('homepage')" class="px-4 py-1.5 text-xs font-medium bg-terracotta-500 text-white rounded hover:bg-terracotta-600">Edit Homepage</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Content (1 col) -->
+                <div class="space-y-4">
+                    <h3 class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">Recent Content</h3>
+                    <div class="space-y-3">
+                        <template x-if="projects.length > 0">
+                            <div class="bg-espresso-800 border border-espresso-600 rounded-lg p-3 flex gap-3 items-center cursor-pointer hover:border-terracotta-500" @click="setView('projects')">
+                                <img :src="getImageUrl(projects[0].cover_image)" class="w-12 h-12 rounded object-cover">
+                                <div>
+                                    <p class="text-[10px] text-terracotta-400 uppercase tracking-wider mb-0.5">Latest Project</p>
+                                    <p class="text-sm font-medium text-ivory-100 truncate" x-text="projects[0].title"></p>
+                                </div>
+                            </div>
+                        </template>
+                        <template x-if="songs.length > 0">
+                            <div class="bg-espresso-800 border border-espresso-600 rounded-lg p-3 flex gap-3 items-center cursor-pointer hover:border-terracotta-500" @click="setView('music')">
+                                <img :src="getImageUrl(songs[0].cover_image)" class="w-12 h-12 rounded object-cover">
+                                <div>
+                                    <p class="text-[10px] text-terracotta-400 uppercase tracking-wider mb-0.5">Latest Song</p>
+                                    <p class="text-sm font-medium text-ivory-100 truncate" x-text="songs[0].title"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Photos Strip -->
+            <div class="space-y-4 pt-4 border-t border-espresso-600">
+                <div class="flex justify-between items-end">
+                    <h3 class="text-[10px] font-semibold tracking-widest uppercase text-ivory-muted">Latest Photos</h3>
+                    <button @click="setView('photos')" class="text-xs text-terracotta-400 hover:text-terracotta-300">View Gallery →</button>
+                </div>
+                <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+                    <template x-for="p in photos.slice(0,6)" :key="p.id">
+                        <img :src="p.url" class="w-32 h-32 rounded-lg object-cover flex-shrink-0 border border-espresso-600 cursor-pointer hover:opacity-80">
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOMEPAGE EDITOR -->
+        <section x-show="currentView === 'homepage'" x-cloak class="space-y-6">
+            <p class="text-sm text-ivory-muted mb-6">Manage the content visitors see on your homepage.</p>
+            
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="font-serif text-2xl text-ivory-100 mb-6">Edit Homepage Hero</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-medium text-ivory-muted mb-1.5">Hero Label</label>
+                                <input x-model="formData.hero_label" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-ivory-muted mb-1.5">Name</label>
+                                <input x-model="formData.hero_name" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-ivory-muted mb-1.5">Professional Roles</label>
+                                <input x-model="formData.hero_roles" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-ivory-muted mb-1.5">Introduction</label>
+                                <textarea x-model="formData.hero_intro" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none" rows="3"></textarea>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-ivory-muted mb-1.5">Primary Button</label>
+                                    <input x-model="formData.hero_btn1" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none"/>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-ivory-muted mb-1.5">Secondary Button</label>
+                                    <input x-model="formData.hero_btn2" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-xs font-medium text-ivory-muted">Current Hero Image</label>
+                            <div class="aspect-[3/4] w-full max-w-sm bg-espresso-950 rounded-lg border border-espresso-600 flex items-center justify-center overflow-hidden">
+                                <img x-show="getImageUrl(formData.hero_image)" :src="getImageUrl(formData.hero_image)" class="w-full h-full object-cover">
+                            </div>
+                            <!-- In a full version, this would open the Image Chooser modal -->
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 text-xs font-medium border border-espresso-600 rounded hover:bg-espresso-700">Change Image</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-espresso-850 flex items-center justify-end gap-3">
+                    <button class="px-4 py-2 text-sm font-medium text-ivory-muted hover:text-ivory-100">Cancel</button>
+                    <button @click="saveHero()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded hover:bg-terracotta-600 transition-colors">Save & Publish</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-espresso-800 border border-espresso-600 rounded-lg p-5">
+                    <h4 class="font-serif text-lg text-ivory-100 mb-2">About Section</h4>
+                    <p class="text-xs text-ivory-muted mb-4 line-clamp-2" x-text="formData.about_bio"></p>
+                    <button @click="setView('about')" class="text-xs px-3 py-1.5 border border-espresso-600 rounded hover:bg-espresso-700">Edit About</button>
+                </div>
+                <div class="bg-espresso-800 border border-espresso-600 rounded-lg p-5">
+                    <h4 class="font-serif text-lg text-ivory-100 mb-2">Featured Project</h4>
+                    <template x-if="projects.length > 0">
+                        <img :src="getImageUrl(projects[0].cover_image)" class="w-full h-24 object-cover rounded mb-4">
+                    </template>
+                    <button @click="setView('projects')" class="text-xs px-3 py-1.5 border border-espresso-600 rounded hover:bg-espresso-700">Manage Projects</button>
+                </div>
+                <div class="bg-espresso-800 border border-espresso-600 rounded-lg p-5">
+                    <h4 class="font-serif text-lg text-ivory-100 mb-2">Music</h4>
+                    <template x-if="songs.length > 0">
+                        <img :src="getImageUrl(songs[0].cover_image)" class="w-full h-24 object-cover rounded mb-4">
+                    </template>
+                    <button @click="setView('music')" class="text-xs px-3 py-1.5 border border-espresso-600 rounded hover:bg-espresso-700">Manage Music</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section x-show="currentView === 'about'" x-cloak class="space-y-6">
+            <h2 class="font-serif text-2xl text-ivory-100">About Tejanjali</h2>
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-6">
+                <div>
+                    <label class="block text-xs font-medium text-ivory-muted mb-1.5">Biography</label>
+                    <textarea x-model="formData.about_bio" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:border-terracotta-500 focus:outline-none" rows="8"></textarea>
+                </div>
+                <button @click="saveHero()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded hover:bg-terracotta-600 transition-colors">Save Changes</button>
+            </div>
+        </section>
+
+        <!-- PHOTOS -->
+        <section x-show="currentView === 'photos'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <input type="text" placeholder="Search photos..." class="bg-espresso-800 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 w-64 focus:outline-none focus:border-terracotta-500">
+                    <select class="bg-espresso-800 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        <option>All Categories</option>
+                        <option>Singing</option>
+                        <option>Performance</option>
+                        <option>Studio</option>
+                    </select>
+                </div>
+                <div class="relative">
+                    <input type="file" @change="uploadPhoto" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                    <button class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Upload Photos</button>
+                </div>
+            </div>
+            
+            <div x-show="photos.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                Your gallery is empty.<br><br>
+                <span class="relative inline-block cursor-pointer">
+                    <input type="file" @change="uploadPhoto" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                    <button class="text-terracotta-400 font-medium">+ Upload Photos</button>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 masonry">
+                <template x-for="p in photos" :key="p.id">
+                    <div class="group rounded-md overflow-hidden bg-espresso-800 border border-espresso-600 relative">
+                        <div class="aspect-square w-full">
+                            <img :src="p.url" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[10px] text-ivory-muted uppercase tracking-wider flex justify-between">
+                                <span x-text="p.category || 'Gallery'"></span>
+                                <span x-show="p.is_featured" class="text-brass">★ Featured</span>
+                            </p>
+                        </div>
+                        <div class="absolute inset-0 bg-espresso-950/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
+                            <button @click="deletePhoto(p.id)" class="px-3 py-1.5 border border-rose-500/50 text-rose-400 text-xs rounded hover:bg-rose-500 hover:text-white transition-colors">Delete</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- MUSIC -->
+        <section x-show="currentView === 'music'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <input type="text" placeholder="Search songs..." class="bg-espresso-800 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 w-64 focus:outline-none focus:border-terracotta-500">
+                <button @click="addingMusic = !addingMusic" class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Add Song</button>
+            </div>
+            
+            <div x-show="addingMusic" class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-4 mb-8">
+                <h3 class="font-serif text-xl text-ivory-100">Add New Song</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Song Title</label>
+                        <input x-model="newSong.title" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Category (Original, Cover, Live)</label>
+                        <input x-model="newSong.category" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Description</label>
+                        <textarea x-model="newSong.description" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button @click="addingMusic = false" class="px-4 py-2 text-sm text-ivory-muted">Cancel</button>
+                    <button @click="addSong()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded">Save Song</button>
+                </div>
+            </div>
+
+            <div x-show="songs.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No songs added yet.
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="s in songs" :key="s.id">
+                    <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden flex flex-col">
+                        <div class="h-48 bg-espresso-900 relative">
+                            <template x-if="s.cover_image">
+                                <img :src="getImageUrl(s.cover_image)" class="w-full h-full object-cover">
+                            </template>
+                            <template x-if="!s.cover_image">
+                                <div class="w-full h-full flex items-center justify-center text-ivory-muted/30">
+                                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="p-4 flex-1">
+                            <h4 class="font-semibold text-ivory-100 mb-1" x-text="s.title"></h4>
+                            <p class="text-xs text-terracotta-400 mb-2" x-text="s.category"></p>
+                            <p class="text-sm text-ivory-muted line-clamp-2" x-text="s.description"></p>
+                        </div>
+                        <div class="border-t border-espresso-600 p-3 flex justify-between items-center bg-espresso-850">
+                            <span class="text-[10px] text-emerald-400 uppercase">● Published</span>
+                            <div class="flex gap-3">
+                                <button class="text-xs text-brass hover:text-white">Edit</button>
+                                <button @click="deleteSong(s.id)" class="text-xs text-rose-400 hover:text-rose-300">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section x-show="currentView === 'projects'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <h2 class="font-serif text-2xl text-ivory-100">My Projects</h2>
+                <button @click="addingProject = !addingProject" class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Add Project</button>
+            </div>
+
+            <div x-show="addingProject" class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-4 mb-8">
+                <h3 class="font-serif text-xl text-ivory-100">Add New Project</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Project Name</label>
+                        <input x-model="newProject.title" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Role (e.g. Lead Singer)</label>
+                        <input x-model="newProject.role" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Description</label>
+                        <textarea x-model="newProject.description" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button @click="addingProject = false" class="px-4 py-2 text-sm text-ivory-muted">Cancel</button>
+                    <button @click="addProject()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded">Save Project</button>
+                </div>
+            </div>
+
+            <div x-show="projects.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No projects added yet.
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <template x-for="p in projects" :key="p.id">
+                    <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden flex flex-col sm:flex-row">
+                        <div class="w-full sm:w-48 h-48 bg-espresso-900 flex-shrink-0">
+                            <template x-if="p.cover_image">
+                                <img :src="getImageUrl(p.cover_image)" class="w-full h-full object-cover">
+                            </template>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-semibold text-ivory-100 text-lg mb-1" x-text="p.title"></h4>
+                                <p class="text-xs text-brass mb-3 uppercase tracking-wider" x-text="p.role"></p>
+                                <p class="text-sm text-ivory-muted line-clamp-3" x-text="p.short_desc || p.description"></p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="text-[10px] text-emerald-400 uppercase">● Published</span>
+                                <div class="flex gap-4">
+                                    <button class="text-xs text-brass hover:text-white">Edit</button>
+                                    <button @click="deleteProject(p.id)" class="text-xs text-rose-400 hover:text-rose-300">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        
+        
+        <!-- JOURNEY -->
+        <section x-show="currentView === 'journey'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="font-serif text-2xl text-ivory-100">The Musical Journey</h2>
+                    <p class="text-sm text-ivory-muted">Manage the timeline of your professional career.</p>
+                </div>
+                <button @click="addingMilestone = !addingMilestone" class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Add Milestone</button>
+            </div>
+            
+            <div x-show="addingMilestone" class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-4 mb-8">
+                <h3 class="font-serif text-xl text-ivory-100">Add New Milestone</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Age / Year</label>
+                        <input x-model="newMilestone.age_year" placeholder="e.g. AGE 8 or 2015" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Title</label>
+                        <input x-model="newMilestone.title" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Description</label>
+                        <textarea x-model="newMilestone.description" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button @click="addingMilestone = false" class="px-4 py-2 text-sm text-ivory-muted">Cancel</button>
+                    <button @click="saveMilestone()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded">Save Milestone</button>
+                </div>
+            </div>
+
+            <div x-show="milestones.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No milestones added yet.
+            </div>
+
+            <div class="relative border-l border-espresso-600 ml-4 space-y-8 pb-8">
+                <template x-for="(m, index) in milestones" :key="m.id">
+                    <div class="relative pl-8">
+                        <div class="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-terracotta-500"></div>
+                        <div class="bg-espresso-800 rounded-lg border border-espresso-600 p-5 flex flex-col md:flex-row gap-6">
+                            <div class="flex-1">
+                                <span class="text-xs font-bold text-terracotta-400 tracking-widest uppercase mb-1 block" x-text="m.age_year"></span>
+                                <h4 class="font-serif text-xl text-ivory-100 mb-2" x-text="m.title"></h4>
+                                <p class="text-sm text-ivory-muted" x-text="m.description"></p>
+                            </div>
+                            <template x-if="m.photo_filename">
+                                <div class="w-full md:w-48 h-32 rounded bg-espresso-900 flex-shrink-0 overflow-hidden">
+                                    <img :src="getImageUrl(m.photo_filename)" class="w-full h-full object-cover">
+                                </div>
+                            </template>
+                        </div>
+                        <div class="flex justify-end gap-3 mt-2">
+                            <button @click="moveMilestone(index, -1)" x-show="index > 0" class="text-xs text-brass hover:text-white">Move Up</button>
+                            <button @click="moveMilestone(index, 1)" x-show="index < milestones.length - 1" class="text-xs text-brass hover:text-white">Move Down</button>
+                            <button @click="deleteMilestone(m.id)" class="text-xs text-rose-400 hover:text-rose-300 ml-4">Delete</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- ARTISTRY -->
+        <section x-show="currentView === 'artistry'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="font-serif text-2xl text-ivory-100">My Artistry</h2>
+                    <p class="text-sm text-ivory-muted">Manage the roles, skills and creative disciplines displayed on your website.</p>
+                </div>
+                <button @click="addingRole = !addingRole" class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Add Role</button>
+            </div>
+            
+            <div x-show="addingRole" class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-4 mb-8">
+                <h3 class="font-serif text-xl text-ivory-100">Add New Role</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Role Name</label>
+                        <input x-model="newRole.title" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Icon (emoji or symbol)</label>
+                        <input x-model="newRole.icon" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Description</label>
+                        <textarea x-model="newRole.description" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button @click="addingRole = false" class="px-4 py-2 text-sm text-ivory-muted">Cancel</button>
+                    <button @click="saveRole()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded">Save Role</button>
+                </div>
+            </div>
+
+            <div x-show="roles.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No creative roles added yet.<br><br>
+                <button @click="addingRole = true" class="text-terracotta-400 font-medium">+ Add Role</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <template x-for="(role, index) in roles" :key="role.id">
+                    <div class="bg-espresso-800 rounded-lg border border-espresso-600 p-5 flex flex-col justify-between">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-full bg-espresso-900 flex items-center justify-center text-xl text-terracotta-400 flex-shrink-0" x-text="role.icon"></div>
+                            <div>
+                                <h4 class="font-semibold text-ivory-100 uppercase tracking-widest text-sm mb-1">
+                                    <span class="text-ivory-muted mr-1" x-text="String(index + 1).padStart(2, '0')"></span>
+                                    <span x-text="role.title"></span>
+                                </h4>
+                                <p class="text-sm text-ivory-muted" x-text="role.description"></p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-espresso-600">
+                            <div class="flex items-center gap-2 text-[10px] uppercase font-bold" :class="role.is_visible ? 'text-emerald-400' : 'text-rose-400'">
+                                <span class="w-1.5 h-1.5 rounded-full" :class="role.is_visible ? 'bg-emerald-400' : 'bg-rose-400'"></span>
+                                <span x-text="role.is_visible ? 'Visible' : 'Hidden'"></span>
+                            </div>
+                            <div class="flex gap-3">
+                                <button @click="toggleRoleVisibility(role)" class="text-xs text-brass hover:text-white" x-text="role.is_visible ? 'Hide' : 'Show'"></button>
+                                <button @click="deleteRole(role.id)" class="text-xs text-rose-400 hover:text-rose-300">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section x-show="currentView === 'testimonials'" x-cloak class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="font-serif text-2xl text-ivory-100">Testimonials</h2>
+                    <p class="text-sm text-ivory-muted">Manage the words and recommendations displayed on your website.</p>
+                </div>
+                <button @click="addingTestimonial = !addingTestimonial" class="px-5 py-2 text-sm font-medium rounded bg-terracotta-500 text-white hover:bg-terracotta-600 transition-colors">+ Add Testimonial</button>
+            </div>
+            
+            <div x-show="addingTestimonial" class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 space-y-4 mb-8">
+                <h3 class="font-serif text-xl text-ivory-100">Add New Testimonial</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Person Name</label>
+                        <input x-model="newTestimonial.person_name" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Role / Description</label>
+                        <input x-model="newTestimonial.role" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-ivory-muted mb-1.5">Quote</label>
+                        <textarea x-model="newTestimonial.quote" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button @click="addingTestimonial = false" class="px-4 py-2 text-sm text-ivory-muted">Cancel</button>
+                    <button @click="saveTestimonial()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded">Save Testimonial</button>
+                </div>
+            </div>
+
+            <div x-show="testimonials.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No testimonials added yet.
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <template x-for="t in testimonials" :key="t.id">
+                    <div class="bg-espresso-800 rounded-lg border border-espresso-600 p-6 flex flex-col md:flex-row gap-6">
+                        <div class="w-16 h-16 rounded-full bg-espresso-900 flex-shrink-0 overflow-hidden">
+                            <template x-if="t.photo_filename">
+                                <img :src="getImageUrl(t.photo_filename)" class="w-full h-full object-cover">
+                            </template>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-lg font-serif text-ivory-100 italic mb-4">"<span x-text="t.quote"></span>"</p>
+                            <h4 class="font-semibold text-ivory-100 text-sm" x-text="t.person_name"></h4>
+                            <p class="text-xs text-brass uppercase tracking-wider" x-text="t.role"></p>
+                        </div>
+                        <div class="flex flex-col justify-between items-end gap-4 border-l border-espresso-600 pl-6">
+                            <div class="flex flex-col items-end gap-2 text-[10px] uppercase font-bold">
+                                <div class="flex items-center gap-1.5" :class="t.is_published ? 'text-emerald-400' : 'text-rose-400'">
+                                    <span class="w-1.5 h-1.5 rounded-full" :class="t.is_published ? 'bg-emerald-400' : 'bg-rose-400'"></span>
+                                    <span x-text="t.is_published ? 'Published' : 'Hidden'"></span>
+                                </div>
+                                <div x-show="t.is_featured" class="flex items-center gap-1.5 text-brass">
+                                    ★ Featured
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button @click="toggleTestimonial(t)" class="text-xs text-brass hover:text-white" x-text="t.is_published ? 'Hide' : 'Show'"></button>
+                                <button @click="deleteTestimonial(t.id)" class="text-xs text-rose-400 hover:text-rose-300">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section x-show="currentView === 'settings'" x-cloak class="space-y-8">
+            <div>
+                <h2 class="font-serif text-2xl text-ivory-100">Settings</h2>
+                <p class="text-sm text-ivory-muted">Manage your profile, contact information and website preferences.</p>
+            </div>
+
+            <!-- Artist Profile -->
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-ivory-muted mb-6">Artist Profile</h3>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="w-32 h-32 rounded-full bg-espresso-900 border border-espresso-600 overflow-hidden flex-shrink-0 flex items-center justify-center">
+                            <img x-show="getImageUrl(formData.hero_image)" :src="getImageUrl(formData.hero_image)" class="w-full h-full object-cover">
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <div>
+                                <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Name</label>
+                                <input x-model="formData.hero_name" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Professional Title</label>
+                                <input x-model="formData.hero_roles" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-ivory-muted mb-6">Contact Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Email</label>
+                            <input x-model="formData.contact_email" placeholder="Not added yet" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Phone</label>
+                            <input x-model="formData.contact_phone" placeholder="Not added yet" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Location</label>
+                            <input x-model="formData.contact_location" placeholder="Not added yet" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-ivory-muted mb-6">Social Media</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 text-ivory-muted">IG</div>
+                            <input x-model="formData.social_instagram" placeholder="Not added yet" class="flex-1 bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 text-ivory-muted">YT</div>
+                            <input x-model="formData.social_youtube" placeholder="Not added yet" class="flex-1 bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 text-ivory-muted">FB</div>
+                            <input x-model="formData.social_facebook" placeholder="Not added yet" class="flex-1 bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Website Information -->
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-ivory-muted mb-6">Website Information</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Website Title</label>
+                            <input x-model="formData.website_title" placeholder="TEJANJALI" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Website Description</label>
+                            <input x-model="formData.website_description" placeholder="Not added yet" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-1">Footer Text</label>
+                            <input x-model="formData.footer_text" placeholder="Not added yet" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-espresso-850 flex items-center justify-end">
+                    <button @click="saveHero()" class="px-6 py-2 text-sm font-medium bg-terracotta-500 text-white rounded hover:bg-terracotta-600 transition-colors">Save All Settings</button>
+                </div>
+            </div>
+
+            
+            <!-- Visual Effects -->
+            <div class="bg-espresso-800 rounded-lg border border-espresso-600 overflow-hidden">
+                <div class="p-6 border-b border-espresso-600">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-ivory-muted mb-6">Visual Effects (Three.js)</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-medium text-ivory-100">Three.js Effects</h4>
+                                <p class="text-[10px] text-ivory-muted mt-1">Master switch for all WebGL 3D effects on the website.</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" x-model="formData.fx_enabled" x-bind:checked="formData.fx_enabled == '1'" @change="formData.fx_enabled = formData.fx_enabled == '1' ? '0' : '1'">
+                                <div class="w-9 h-5 bg-espresso-900 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-ivory-muted after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-terracotta-500"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-medium text-ivory-100">Hero Particle Effect</h4>
+                                <p class="text-[10px] text-ivory-muted mt-1">Adds a subtle interactive flowing waveform to the homepage.</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" x-model="formData.fx_hero" x-bind:checked="formData.fx_hero == '1'" @change="formData.fx_hero = formData.fx_hero == '1' ? '0' : '1'">
+                                <div class="w-9 h-5 bg-espresso-900 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-ivory-muted after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-terracotta-500"></div>
+                            </label>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-medium text-ivory-100">Mouse Parallax</h4>
+                                <p class="text-[10px] text-ivory-muted mt-1">Subtle camera movement reacting to visitor's cursor.</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" x-model="formData.fx_parallax" x-bind:checked="formData.fx_parallax == '1'" @change="formData.fx_parallax = formData.fx_parallax == '1' ? '0' : '1'">
+                                <div class="w-9 h-5 bg-espresso-900 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-ivory-muted after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-terracotta-500"></div>
+                            </label>
+                        </div>
+
+                        <div class="pt-4 border-t border-espresso-700/50">
+                            <label class="block text-[10px] font-medium text-ivory-muted uppercase mb-2">Visual Effect Quality</label>
+                            <select x-model="formData.fx_quality" class="w-full bg-espresso-900 border border-espresso-600 rounded px-3 py-2 text-sm text-ivory-100 focus:outline-none">
+                                <option value="Auto">Auto (Recommended)</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="bg-espresso-900 rounded-lg border border-rose-900/50 overflow-hidden mt-12">
+                <div class="p-6">
+                    <h3 class="text-xs font-semibold tracking-wider uppercase text-rose-500 mb-6">Danger Zone</h3>
+                    <div class="flex gap-4">
+                        <button @click="logout()" class="px-4 py-2 text-sm border border-espresso-600 rounded text-ivory-muted hover:text-ivory-100 transition-colors">Logout</button>
+                        <button class="px-4 py-2 text-sm border border-rose-900/50 rounded text-rose-500 hover:bg-rose-900/20 transition-colors">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MESSAGES -->
+        <section x-show="currentView === 'messages'" x-cloak class="space-y-6">
+            <h2 class="font-serif text-2xl text-ivory-100">Messages</h2>
+            
+            <div x-show="inquiries.length === 0" class="text-center py-20 text-ivory-muted text-sm border border-dashed border-espresso-600 rounded-lg">
+                No enquiries yet.
+            </div>
+
+            <div class="space-y-4">
+                <template x-for="msg in inquiries" :key="msg.id">
+                    <div class="bg-espresso-800 rounded-lg border border-espresso-600 p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h4 class="font-semibold text-ivory-100 text-lg" x-text="msg.subject || 'New Message'"></h4>
+                                <p class="text-sm text-terracotta-400" x-text="msg.name + ' (' + msg.email + ')'"></p>
+                            </div>
+                            <button @click="deleteInquiry(msg.id)" class="text-xs px-3 py-1 border border-espresso-600 rounded text-ivory-muted hover:text-rose-400">Delete</button>
+                        </div>
+                        <div class="bg-espresso-900 rounded p-4 text-sm text-ivory-100 whitespace-pre-wrap" x-text="msg.message"></div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    function adminApp() {
+        return {
+            mobileMenuOpen: false,
+            currentView: 'dashboard',
+            addingMusic: false,
+            addingProject: false,
+            
+            formData: { hero_label: '', hero_name: '', hero_roles: '', hero_intro: '', hero_btn1: '', hero_btn2: '', hero_image: '', about_bio: '' },
+            photos: [],
+            projects: [],
+            newProject: { title: '', category: 'General', role: '', description: '' },
+            songs: [],
+            newSong: { title: '', category: 'Original', description: '' },
+            inquiries: [],
+            
+            milestones: [],
+            newMilestone: { age_year: '', title: '', description: '', photo_id: null },
+            addingMilestone: false,
+    
+            roles: [],
+            newRole: { title: '', description: '', icon: '', is_visible: 1 },
+            addingRole: false,
+            
+            testimonials: [],
+            newTestimonial: { person_name: '', role: '', quote: '', photo_id: null, is_featured: 0, is_published: 1 },
+            addingTestimonial: false,
+
+            
+            
+            
+            async fetchMilestones() {
+                const res = await fetch('/api/milestones');
+                this.milestones = await res.json();
+            },
+            async saveMilestone() {
+                this.newMilestone.order_index = this.milestones.length + 1;
+                await fetch('/api/admin/milestones', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(this.newMilestone)
+                });
+                this.newMilestone = { age_year: '', title: '', description: '', photo_id: null };
+                this.addingMilestone = false;
+                this.fetchMilestones();
+                this.showNotification('Milestone saved');
+            },
+            async deleteMilestone(id) {
+                if(!confirm('Delete this milestone?')) return;
+                await fetch('/api/admin/milestones/' + id, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') }
+                });
+                this.fetchMilestones();
+            },
+            async moveMilestone(index, direction) {
+                const arr = this.milestones;
+                if (index + direction < 0 || index + direction >= arr.length) return;
+                
+                const m1 = arr[index];
+                const m2 = arr[index + direction];
+                
+                const tempOrder = m1.order_index;
+                m1.order_index = m2.order_index;
+                m2.order_index = tempOrder;
+                
+                await fetch('/api/admin/milestones', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(m1)
+                });
+                await fetch('/api/admin/milestones', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(m2)
+                });
+                this.fetchMilestones();
+            },
+    
+            async fetchRoles() {
+                const res = await fetch('/api/roles');
+                this.roles = await res.json();
+            },
+            async saveRole() {
+                await fetch('/api/admin/roles', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(this.newRole)
+                });
+                this.newRole = { title: '', description: '', icon: '', is_visible: 1 };
+                this.addingRole = false;
+                this.fetchMilestones();
+                this.fetchRoles();
+                this.showNotification('Role saved');
+            },
+            async deleteRole(id) {
+                if(!confirm('Delete this role?')) return;
+                await fetch('/api/admin/roles/' + id, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') }
+                });
+                this.fetchRoles();
+            },
+            async toggleRoleVisibility(role) {
+                const updated = { ...role, is_visible: role.is_visible ? 0 : 1 };
+                await fetch('/api/admin/roles', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(updated)
+                });
+                this.fetchRoles();
+            },
+
+            async fetchTestimonials() {
+                const res = await fetch('/api/testimonials');
+                this.testimonials = await res.json();
+            },
+            async saveTestimonial() {
+                await fetch('/api/admin/testimonials', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(this.newTestimonial)
+                });
+                this.newTestimonial = { person_name: '', role: '', quote: '', photo_id: null, is_featured: 0, is_published: 1 };
+                this.addingTestimonial = false;
+                this.fetchTestimonials();
+                this.showNotification('Testimonial saved');
+            },
+            async deleteTestimonial(id) {
+                if(!confirm('Delete this testimonial?')) return;
+                await fetch('/api/admin/testimonials/' + id, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') }
+                });
+                this.fetchTestimonials();
+            },
+            async toggleTestimonial(t) {
+                const updated = { ...t, is_published: t.is_published ? 0 : 1 };
+                await fetch('/api/admin/testimonials', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('adminToken') },
+                    body: JSON.stringify(updated)
+                });
+                this.fetchTestimonials();
+            },
+
+
+            init() {
+                this.fetchContent();
+                this.fetchPhotos();
+                this.fetchProjects();
+                this.fetchSongs();
+                this.fetchInquiries();
+            },
+
+            getImageUrl(filename) {
+                if (!filename) return '';
+                if (filename.startsWith('http')) return filename;
+                return '/uploads/' + filename;
+            },
+
+            setView(view) {
+                this.currentView = view;
+                this.mobileMenuOpen = false;
+            },
+
+            currentViewTitle() {
+                const map = {
+                    dashboard: 'Dashboard',
+                    homepage: 'Homepage Content',
+                    about: 'About Profile',
+                    journey: 'Musical Journey',
+                    artistry: 'My Artistry',
+                    music: 'My Music',
+                    projects: 'My Projects',
+                    photos: 'My Photos',
+                    testimonials: 'Testimonials',
+                    messages: 'Messages',
+                    settings: 'Settings'
+                };
+                return map[this.currentView] || 'Admin';
+            },
+
+            logout() {
+                localStorage.removeItem('adminToken');
+                window.location.href = '/admin/login.html';
+            },
+            
+            async fetchContent() {
+                const res = await fetch('/api/content');
+                const data = await res.json();
+                this.formData = { ...this.formData, ...data };
+            },
+            async saveHero() {
+                try {
+                    await fetch('/api/admin/content', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
+                        body: JSON.stringify(this.formData)
+                    });
+                    this.showNotification('Website updated successfully');
+                } catch(e) { console.error(e); }
+            },
+
+            // Photos
+            async fetchPhotos() {
+                const res = await fetch('/api/photos');
+                const data = await res.json();
+                this.photos = data.map(p => ({
+                    ...p,
+                    url: this.getImageUrl(p.filename)
+                }));
+            },
+            async uploadPhoto(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+                const fd = new FormData();
+                fd.append('photo', file);
+                fd.append('category', 'Gallery');
+                await fetch('/api/admin/photos/upload', {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
+                    body: fd
+                });
+                this.fetchPhotos();
+                this.showNotification('Photo uploaded successfully');
+            },
+            async deletePhoto(id) {
+                if(!confirm('Delete this photo? This photo will be removed from your portfolio.')) return;
+                await fetch(`/api/admin/photos/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
+                });
+                this.fetchPhotos();
+            },
+
+            // Projects
+            async fetchProjects() {
+                const res = await fetch('/api/projects');
+                this.projects = await res.json();
+            },
+            async addProject() {
+                await fetch('/api/admin/projects', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
+                    body: JSON.stringify(this.newProject)
+                });
+                this.newProject = { title: '', category: 'General', role: '', description: '' };
+                this.addingProject = false;
+                this.fetchProjects();
+                this.showNotification('Project added');
+            },
+            async deleteProject(id) {
+                if(!confirm('Delete this project?')) return;
+                await fetch(`/api/admin/projects/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
+                });
+                this.fetchProjects();
+            },
+
+            // Music
+            async fetchSongs() {
+                const res = await fetch('/api/songs');
+                this.songs = await res.json();
+            },
+            async addSong() {
+                await fetch('/api/admin/songs', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` },
+                    body: JSON.stringify(this.newSong)
+                });
+                this.newSong = { title: '', category: 'Original', description: '' };
+                this.addingMusic = false;
+                this.fetchSongs();
+                this.showNotification('Song added');
+            },
+            async deleteSong(id) {
+                if(!confirm('Delete this song?')) return;
+                await fetch(`/api/admin/songs/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
+                });
+                this.fetchSongs();
+            },
+
+            // Inquiries
+            async fetchInquiries() {
+                const res = await fetch('/api/admin/messages', {
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
+                });
+                this.inquiries = await res.json();
+            },
+            async deleteInquiry(id) {
+                if(!confirm('Delete message?')) return;
+                await fetch(`/api/admin/messages/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
+                });
+                this.fetchInquiries();
+            },
+
+            showNotification(msg) {
+                alert('✓ ' + msg); 
+            }
+        }
+    }
+</script>
+</body></html>
